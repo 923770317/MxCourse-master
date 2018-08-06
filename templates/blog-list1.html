@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}cc测试网--blog{% endblock %}
+{% block custom_bread %}
+<section>
+        <div class="wp">
+            <ul  class="crumbs">
+                <li><a href="index.html">首页</a>></li>
+                <li>BLOG</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+<section>
+	<div class="wp butler_list_box list">
+	<div class='left'>
+		<div class="listoptions">
+			<ul>
+				<li>
+					<h2>博客类别</h2>
+					<div class="cont">
+                        <a href="?"><span class="{% ifequal type '' %}active2{% endifequal %}">全部</span></a>
+
+                            {% for tmptype in all_types %}
+
+                                <a href="?type={{ tmptype.id }}"><span class="{% ifequal type 1 %}active2{% endifequal %}">{{ tmptype.name }}</span></a>
+
+
+                            {% endfor %}
+{#                            <a href="?type=1"><span class="{% ifequal type "1" %}active2{% endifequal %}">性能测试</span></a>#}
+{#                             <a href="?type=3"><span class="{% ifequal type "3" %}active2{% endifequal %}">python</span></a>#}
+{##}
+{#                            <a href="?ct=gx&city={{ city_id }}"><span class="{% ifequal catgory 'gx' %}active2{% endifequal %}">高校</span></a>#}
+{##}
+{#                            <a href="?ct=gr&city={{ city_id }}"><span class="{% ifequal catgory 'gr' %}active2{% endifequal %}">个人</span></a>#}
+
+					</div>
+				</li>
+
+			</ul>
+		</div>
+		<div class="all">共<span class="key">{{ blog_nums }}</span>篇</div>
+		<div class="butler_list company list">
+		<div class="layout">
+			<div class="head">
+				<ul class="tab_header">
+					<li class="{% ifequal sort  '' %}active{% endifequal %}"><a href="?type={{ type }}">全部</a> </li>
+					<li class="{% ifequal sort  'hot' %}active{% endifequal %}"><a href="?sort=hot&type={{ type }}">点击数 &#8595;</a></li>
+				</ul>
+			</div>
+
+            {% for blog in all_blogs.object_list %}
+                <dl class="des difdes">
+{#                    <dt>#}
+{#                        <a href="{% url 'org:org_home' course_org.id %}">#}
+{#                            <img width="200" height="120" class="scrollLoading" data-url="{{ MEDIA_URL }}{{ course_org.image }}"/>#}
+{#                        </a>#}
+{#                    </dt>#}
+                    <dd>
+                        <div class="clearfix">
+                             <a href="{% url 'blog:blog_detail' blog.id %}">
+                                 <h1>{{ blog.title }}</h1>
+{#                                 <div class="pic fl">#}
+{#                                     <img src="{% static 'images/authentication.png' %}"/>#}
+{#                                     <img src="{% static 'images/gold.png' %}"/>#}
+{#                                 </div>#}
+                             </a>
+                        </div>
+                    </dd>
+{#                    <div class="buy start_groupbuy jsShowPerfect2" data-id="22"><br/>联系<br/>服务</div>#}
+                </dl>
+            {% endfor %}
+
+
+		</div>
+		 <div class="pageturn">
+            <ul class="pagelist">
+                {% if all_blogs.has_previous %}
+                    <li class="long"><a href="?{{ all_blogs.previous_page_number.querystring }}">上一页</a></li>
+                {% endif %}
+            
+            {% for page in all_blogs.pages %}
+                {% if page %}
+                    {% ifequal page all_blogs.number %}
+                        <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                    {% else %}
+                        <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+                    {% endifequal %}
+                {% else %}
+                    <li class="none"><a href="">...</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if all_orgs.has_next %}
+                <li class="long"><a href="?{{ all_orgs.next_page_number.querystring }}">下一页</a></li>
+            {% endif %}
+            </ul>
+        </div>
+		</div>
+	</div>
+
+		<div class="right companyrank layout">
+			<div class="head">热门BLOG</div>
+
+            {% for curent_blog in hot_blogs %}
+                <dl class="des">
+                    <dt class="num fl">{{ forloop.counter }}</dt>
+                    <dd>
+                        <a href="{% url 'blog:blog_detail' curent_blog.id %}"><h1>{{ curent_blog.title }}</h1></a>
+                    </dd>
+                </dl>
+            {% endfor %}
+
+		</div>
+        </div>
+</section>
+{% endblock %}
+
+{% block custom_js %}
+<script>
+    $(function(){
+        $('#jsStayBtn').on('click', function(){
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url:"{% url 'org:add_ask' %}",
+                data:$('#jsStayForm').serialize(),
+                async: true,
+                success: function(data) {
+                    if(data.status == "success"){
+                        $("#jsStayForm")[0].reset();
+                        alert("提交成功")
+                    }else if(data.status == 'fail'){
+                        $('#jsCompanyTips').html(data.msg)
+                    }
+                },
+            });
+        });
+    })
+
+</script>
+{% endblock %}

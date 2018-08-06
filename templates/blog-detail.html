@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}blog详情{% endblock %}
+{% block custom_bread %}
+<section>
+        <div class="wp">
+            <ul  class="crumbs">
+                <li><a href="{% url 'index' %}">首页</a>></li>
+                <li><a href="{% url 'blog:blog_list' %}">blog列表</a>></li>
+                <li>{{ blog.title }}</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+<section>
+	<div class="wp butler-detail-box butler-diaryd-box clearfix">
+        <div class="fl list">
+            <div class="butler_detail_list clearfix">
+                {{ blog.title }}
+                </div>
+            </div>
+            <div class="butler_detail_cont clearfix">
+                <div class="left layout">
+				<div class="head">
+					<ul class="tab_header">
+						<li class="active"><a href="{% url 'course:course_list'  %}">内容</a> </li>
+					</ul>
+				</div>
+                    <div class="companycenter">
+                        <div class="group_list brief">
+                            {% autoescape off %}
+                            {{ blog.content }}
+                            {% endautoescape %}
+                        </div>
+                    </div>
+                <!--<div class="pageturn">-->
+                    <!--<ul class="pagelist">-->
+                        <!--<li class="active"><a href="?page=1">1</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            </div>
+            </div>
+        </div>
+        <div class="fr list">
+             <div class="butler_detail_list">
+                <div class="right butler-company-box">
+                <div class="head">
+                    <h1>{{ blog.author.username }}</h1>
+                </div>
+                <div class="pic">
+
+                        <img width="150" height="80" src="{{ MEDIA_URL }}{{ blog.author.image }}"/>
+
+                </div>
+
+            </div>
+            </div>
+{#            <div class="butler_detail_cont">#}
+{#                <div class="butler_list_box">#}
+{#                    <div class="right layout">#}
+{#                        <div class="head">讲师排行榜</div>#}
+{##}
+{#                        {% for hot_teacher in sorted_teacher %}#}
+{#                            <dl class="des">#}
+{#                            <span class="num fl">{{ forloop.counter }}</span>#}
+{#                            <a href="{% url 'org:teacher_detail' hot_teacher.id %}">#}
+{#                                <dt>#}
+{#                                    <img width="50" height="50" class="scrollLoading" src="{{ MEDIA_URL }}{{ hot_teacher.image }}"/>#}
+{#                                </dt>#}
+{#                            </a>#}
+{#                            <dd>#}
+{#                                <a href="{% url 'org:teacher_detail' hot_teacher.id %}">#}
+{#                                    <h1 title="bobby">{{ hot_teacher.name }}</h1>#}
+{#                                </a>#}
+{#                                <p>工作年限：<span>{{ hot_teacher.work_years }}年</span></p>#}
+{#                            </dd>#}
+{#                        </dl>#}
+{#                        {% endfor %}#}
+{##}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+        </div>
+	</div>
+</section>
+{% endblock %}
+
+
+{% block custom_js %}
+<script type="text/javascript">
+//收藏分享
+function add_fav(current_elem, fav_id, fav_type){
+    $.ajax({
+        cache: false,
+        type: "POST",
+        url:"{% url 'org:add_fav' %}",
+        data:{'fav_id':fav_id, 'fav_type':fav_type},
+        async: true,
+        beforeSend:function(xhr, settings){
+            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        },
+        success: function(data) {
+            if(data.status == 'fail'){
+                if(data.msg == '用户未登录'){
+                    window.location.href="{% url 'login' %}";
+                }else{
+                    alert(data.msg)
+                }
+
+            }else if(data.status == 'success'){
+                current_elem.text(data.msg)
+            }
+        },
+    });
+}
+
+$('#jsLeftBtn').on('click', function(){
+    add_fav($(this), 1, 3);
+});
+
+$('#jsRightBtn').on('click', function(){
+    add_fav($(this), 1, 2);
+});
+</script>
+
+{% endblock %}
