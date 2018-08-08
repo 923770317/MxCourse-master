@@ -61,21 +61,23 @@ class BlogsListVies(View):
 class BlogDetailView(View):
     def get(self,request,blog_id):
         blog = Blog.objects.get(id=int(blog_id))
-        blog.click_nums +=1
+        comments = Comment.objects.filter(blog_id=int(blog_id)).order_by('-create_time')
+        blog.click_nums += 1
         blog.save()
 
         return render(request,'blog-detail.html',{
           'blog': blog,
+          'comments':comments,
         })
 
 
 
-class CommentView(View):
+class CommentAddView(View):
     def post(self,request):
         if not request.user.is_authenticated():
             return HttpResponse('{"status": "fail", "msg":"用户未登录"}', content_type="application/json")
 
-        blog_id = request.POST.get("id")
+        blog_id = int(request.POST.get("blog_id"))
         content = request.POST.get("content")
 
         blog = Blog.objects.get(id=int(blog_id))

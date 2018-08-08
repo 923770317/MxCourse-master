@@ -41,6 +41,9 @@ class Blog(models.Model):
         verbose_name = u"博客"
         verbose_name_plural = verbose_name
 
+    def __unicode__(self):
+        return self.title
+
 class Comment(models.Model):
     '''
      评论

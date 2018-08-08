@@ -2,12 +2,24 @@
 #coding:utf-8
 
 import xadmin
-from .models import BlogType,Blog
+from .models import BlogType,Blog,Comment
 
 class BlogTypeAdmin(object):
     list_display = ['name','is_delete']
     search_fields = ['name']
 
+class CommentAdmin(object):
+    list_display = ['blog','content','author','create_time']
+    list_filter = ['blog', 'author']
+
+    def save_models(self):
+        '''
+        实现保存当前用户
+        '''
+        obj = self.new_obj
+        request = self.request
+        obj.author = request.user
+        obj.save()
 
 class BlogAdmin(object):
     list_display = ['title','blog_type','author','create_time','modify_time']
@@ -35,6 +47,6 @@ class BlogAdmin(object):
             return qs.filter(author = self.request.user)
 
 
-
 xadmin.site.register(BlogType,BlogTypeAdmin)
 xadmin.site.register(Blog,BlogAdmin)
+xadmin.site.register(Comment,CommentAdmin)
