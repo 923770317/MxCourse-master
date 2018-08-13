@@ -51,6 +51,9 @@ urlpatterns = [
     # 博客
     url(r'^blogs/',include('blog.urls',namespace='blog')),
 
+    # 新闻
+    url(r'^news/',include('news.urls',namespace='news')),
+
     # 用户
     url(r'^users/', include('users.urls', namespace="users")),
 

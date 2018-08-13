@@ -5,9 +5,8 @@ from django.views.generic.base import View
 from django.http import HttpResponse
 from django.db.models import Q
 from .models import BlogType,Blog,Comment
-from  operation.models import UserFavorite,CourseComments, UserCourse
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
-from utils.mixin_utils import LoginRequireMixin
+
 
 
 # Create your views here.

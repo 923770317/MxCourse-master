@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'pure_pagination',
     'blog',
     'DjangoUeditor',
+    'news',
 ]
 
 # 重写用户模型
