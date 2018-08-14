@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}blog详情{% endblock %}
+{% block custom_bread %}
+<section>
+        <div class="wp">
+            <ul  class="crumbs">
+                <li><a href="{% url 'index' %}">首页</a>></li>
+                <li><a href="{% url 'news:news_list' %}">新闻列表</a>></li>
+                <li>{{ new.title }}</li>
+            </ul>
+        </div>
+    </section>
+{% endblock %}
+
+{% block content %}
+<section>
+	<div class="wp butler-detail-box butler-diaryd-box clearfix">
+        <div class="fl list">
+            <div class="butler_detail_list clearfix">
+                {{ new.title }} &nbsp; {{ new.author.nick_name }} &nbsp; {{ new.create_time }}
+                </div>
+            </div>
+            <div class="butler_detail_cont clearfix">
+                <div class="left layout">
+				<div class="head">
+					<ul class="tab_header">
+						<li class="active"><a href="{% url 'course:course_list'  %}">内容</a> </li>
+					</ul>
+				</div>
+                    <div class="companycenter">
+                        <div class="group_list brief">
+                            {% autoescape off %}
+                            {{ new.content }}
+                            {% endautoescape %}
+                        </div>
+                    </div>
+                 <div>
+
+            </div>
+
+                <!--<div class="pageturn">-->
+                    <!--<ul class="pagelist">-->
+                        <!--<li class="active"><a href="?page=1">1</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            </div>
+            </div>
+        </div>
+
+	</div>
+</section>
+{% endblock %}
+
+

@@ -9,4 +9,6 @@ from .views import *
 
 urlpatterns = [
     url(r'^list/$', NewsListViews.as_view(), name="news_list"),
+    # 新闻详情
+    url(r'^new/detail/(?P<id>\d+)/$', NewDetailView.as_view(), name="new_detail"),
 ]
