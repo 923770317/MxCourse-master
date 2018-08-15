@@ -12,11 +12,11 @@
         <div class="fl">
             <div class="imgslide">
                 <ul class="imgs">
-                    {% for banner in all_banners %}
+                    {% for new in all_banners %}
                         <li>
-                        <a href="{{ banner.url }}">
+                        <a href="{% url 'news:new_detail' new.id %}">
                             <img width="1200" height="478"
-                                 src="{{ MEDIA_URL }}{{ banner.image }}"/>
+                                 src="{{ MEDIA_URL }}{{ new.image }}"/>
                         </a>
                     </li>
                     {% endfor %}

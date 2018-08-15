@@ -15,6 +15,7 @@ from utils.mixin_utils import LoginRequireMixin
 from operation.models import UserCourse, UserFavorite, UserMessage
 from organization.models import CourseOrg, Teacher
 from courses.models import Course
+from news.models import News
 from .models import Banner
 # Create your views here.
 
@@ -340,7 +341,8 @@ class IndexView(View):
     首页
     """
     def get(self, request):
-        all_banners = Banner.objects.all().order_by("index")
+        # all_banners = Banner.objects.all().order_by("index")
+        all_banners = News.objects.filter(is_banner=True).order_by('-create_time')
         courses = Course.objects.filter(is_banner=False)[:5]
         banner_courses = Course.objects.filter(is_banner=True)[:3]
         course_orgs = CourseOrg.objects.all()[:3]

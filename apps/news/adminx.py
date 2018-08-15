@@ -8,9 +8,9 @@ import xadmin
 from .models import News
 
 class NewsAdmin(object):
-    list_display = ['title',  'author', 'create_time', 'click_nums']
+    list_display = ['title',  'author', 'create_time','is_banner', 'click_nums',]
     search_fields = ['title', 'content']
-    list_filter = ['author', 'create_time']
+    list_filter = ['author', 'create_time','is_banner']
     style_fields = {'content': 'ueditor'}
 
     def save_models(self):

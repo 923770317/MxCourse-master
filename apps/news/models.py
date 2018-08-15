@@ -18,6 +18,8 @@ class News(models.Model):
     click_nums = models.IntegerField(verbose_name=u'点击量', default=150)
     content = UEditorField(verbose_name=u'新闻内容', width=1200, height=600, imagePath='blog/ueditor/',
                            filePath='blog/ueditor/', default='')
+    is_banner = models.BooleanField(default=False, verbose_name=u"是否轮播")
+    image = models.ImageField(max_length=100, upload_to='news/%Y%m', verbose_name=u"轮播图", blank=True, null=True)
 
     class Meta:
         verbose_name = u"新闻"
