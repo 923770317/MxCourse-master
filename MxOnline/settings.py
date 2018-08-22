@@ -105,11 +105,11 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.mysql',
     #     'NAME': 'online_web',
     #     'USER': 'root',
-    #     'PASSWORD': 'qwe123',
-    #     'HOST': 'localhost',
-    #     'OPTIONS': {
-    #         "init_command": "SET foreign_key_checks = 0;",
-    #     }
+    #     'PASSWORD': 'admin',
+    #     'HOST': 'localhost'
+    #     # 'OPTIONS': {
+    #     #     "init_command": "SET foreign_key_checks = 0;",
+    #     # }
     # }
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
