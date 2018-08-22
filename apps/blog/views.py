@@ -18,15 +18,17 @@ class BlogsListVies(View):
         all_types = BlogType.objects.all()
         hot_blogs = Blog.objects.all().order_by('click_nums')[:3]
 
+        # 关键词搜索功能
+        search_keywords = request.GET.get('keywords', '')
+        if search_keywords:
+            all_blogs = all_blogs.filter(Q(title__icontains=search_keywords) | Q(content__icontains=search_keywords))
+
         #取出类别
         type = request.GET.get('type','')
         if type:
             all_blogs = all_blogs.filter(blog_type=type)
 
-        # 关键词搜索功能
-        search_keywords = request.GET.get('keywords','')
-        if search_keywords:
-            all_blogs = all_blogs.filter(Q(title__icontains=search_keywords) | Q(content__icontains=search_keywords))
+
 
         # 博客排序 默认是按时间倒叙，也可以按点击数
         sort = request.GET.get('sort','')

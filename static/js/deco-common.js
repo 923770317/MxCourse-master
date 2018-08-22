@@ -66,12 +66,10 @@ function search_click(){
     if(keywords == ""){
         return
     }
-    if(type == "course"){
-        request_url = "/course/list?keywords="+keywords
-    }else if(type == "teacher"){
-        request_url = "/org/teacher/list?keywords="+keywords
-    }else if(type == "org"){
-        request_url = "/org/list?keywords="+keywords
+    if(type == "news"){
+        request_url = "/news/list?keywords="+keywords
+    }else if(type == "blog"){
+        request_url = "/blogs/list?keywords="+keywords
     }
     window.location.href = request_url
 }
