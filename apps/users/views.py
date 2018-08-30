@@ -69,8 +69,8 @@ class RegisterView(View):
             user_message.message = "欢迎注册"
             user_message.save()
 
-            send_register_email(user_name,"register")
-            return render(request,"login.html")
+            send_message = send_register_email(user_name,"register")
+            return render(request,"register.html",{"msg": send_message})
         else:
             return render(request,"register.html", {"register_form": register_form})
 
