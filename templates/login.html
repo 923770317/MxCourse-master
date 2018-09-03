@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
-	<title>慕学在线网登录</title>
+	<title>VIPTEST01 登录</title>
 	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/login.css">
 </head>
@@ -36,9 +36,9 @@
 <header>
     <div class="c-box fff-box">
         <div class="wp header-box">
-            <p class="fl hd-tips">慕学在线网，在线学习平台！</p>
+            <p class="fl hd-tips">VIPTEST01，测试在线学习平台！</p>
             <ul class="fr hd-bar">
-                <li>服务电话：<span>33333333</span></li>
+                <li>公众号：<span>软件测试架构师俱乐部</span></li>
                 <li class="active"><a href="{% url 'index' %}">[登录]</a></li>
                 <li><a href="{% url 'register' %}">[注册]</a></li>
             </ul>
@@ -85,7 +85,7 @@
                 <input type='hidden' name='csrfmiddlewaretoken' value='5I2SlleZJOMUX9QbwYLUIAOshdrdpRcy' />
                 {% csrf_token %}
                 </form>
-                <p class="form-p">没有慕学在线网帐号？<a href="{% url 'register' %}">[立即注册]</a></p>
+                <p class="form-p">没有VIPTEST01帐号？<a href="{% url 'register' %}">[立即注册]</a></p>
             </div>
         </div>
     </div>

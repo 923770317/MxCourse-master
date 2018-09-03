@@ -49,13 +49,13 @@ def send_register_email(email,send_type="register"):
     email_body = ""
     if send_type == "register":
         email_title = "注册激活"
-        email_body = "请点击激活：http://127.0.0.1:8000/active/{0}".format(code)
+        email_body = "请点击激活：http://127.0.0.1:8000/active/{0},激活成功后系统会自动跳转至登录页面。".format(code)
 
         send_status = send_mail(email_title, email_body, DEFAULT_FROM_EMAIL, [email])
         if send_status:
-            return "请至注册邮箱中激活账户"
+            return "请至注册邮箱中激活账户！"
         else:
-            return "邮件发送失败，请重试"
+            return "邮件发送失败，请重试！"
 
     elif send_type == "forget":
         email_title = "重置密码"
@@ -63,7 +63,9 @@ def send_register_email(email,send_type="register"):
 
         send_status = send_mail(email_title, email_body, DEFAULT_FROM_EMAIL, [email])
         if send_status:
-            pass
+            return "重置密码链接已发送至注册邮箱中，请查收！"
+        else:
+            return "邮件发送失败，请重试！"
     elif send_type == "updata_email":
         email_title == "邮箱修改验证码"
         email_body = "你的邮箱验证码为：{0}".format(code)
