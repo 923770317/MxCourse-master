@@ -1,6 +1,6 @@
 ﻿{% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}新闻-最新动态{% endblock %}
+{% block title %}VIPTEST01--资讯{% endblock %}
 {% block custom_bread %}
 <section>
         <div class="wp">
@@ -26,7 +26,7 @@
 			</div>
 
             {% for new in all_news.object_list %}
-                <dl class="des">
+                <dl class="des" style="width:903px;height:60px">
 
 
 						<a href="{% url 'news:new_detail' new.id  %}">
@@ -75,9 +75,9 @@
             <dl class="des">
                 <span class="num fl">{{ forloop.counter }}</span>
 
-                <dd>
+                <dd style="float:left ;padding-left:10px;padding-top: 8px; width:150px">
                     <a href="{% url 'news:new_detail' new.id  %}">
-                        <h1 title="bobby">{{ new.title }}</h1>
+                        <h2 title="bobby">{{ new.title }}</h2>
                     </a>
                 </dd>
             </dl>

@@ -1,6 +1,6 @@
 ﻿{% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}cc测试网--blog{% endblock %}
+{% block title %}VIPTEST01--BLOG{% endblock %}
 {% block custom_bread %}
 <section>
         <div class="wp">
@@ -41,35 +41,32 @@
 
 			</ul>
 		</div>
-		<div class="all">共<span class="key">{{ blog_nums }}</span>篇</div>
-		<div class="butler_list company list">
-		<div class="layout">
+
+		<div class="wp butler_list_box list">
+		<div class="butler_list layout">
 			<div class="head">
-				<ul class="tab_header">
+				<ul class="fl tab_header">
 					<li class="{% ifequal sort  '' %}active{% endifequal %}"><a href="?type={{ type }}">全部</a> </li>
 					<li class="{% ifequal sort  'hot' %}active{% endifequal %}"><a href="?sort=hot&type={{ type }}">点击数 &#8595;</a></li>
 				</ul>
+                <div class="fr butler-num">共<span class="key">{{ blog_nums }}</span>篇</div>
 			</div>
 
             {% for blog in all_blogs.object_list %}
-                <dl class="des difdes">
-{#                    <dt>#}
-{#                        <a href="{% url 'org:org_home' course_org.id %}">#}
-{#                            <img width="200" height="120" class="scrollLoading" data-url="{{ MEDIA_URL }}{{ course_org.image }}"/>#}
-{#                        </a>#}
-{#                    </dt>#}
-                    <dd>
-                        <div class="clearfix">
-                             <a href="{% url 'blog:blog_detail' blog.id %}">
-                                 <h1>{{ blog.title }}</h1>
-{#                                 <div class="pic fl">#}
-{#                                     <img src="{% static 'images/authentication.png' %}"/>#}
-{#                                     <img src="{% static 'images/gold.png' %}"/>#}
-{#                                 </div>#}
-                             </a>
-                        </div>
-                    </dd>
-{#                    <div class="buy start_groupbuy jsShowPerfect2" data-id="22"><br/>联系<br/>服务</div>#}
+                <dl class="des" style="width:903px;height:60px">
+                    <a href="{% url 'blog:blog_detail' blog.id %}">
+                         <h1>{{ blog.title }}</h1>
+                     </a>
+
+
+
+                     <ul class="cont">
+                            <li style="width:170px">作者：<span>{{ blog.author.nick_name }}</span></li>
+							<li style="width:170px">发布时间：<span>{{ blog.create_time }}</span></li>
+							<li style="width:170px">点击数：<span>{{ blog.click_nums }}</span></li>
+                     </ul>
+
+
                 </dl>
             {% endfor %}
 
@@ -106,7 +103,7 @@
             {% for curent_blog in hot_blogs %}
                 <dl class="des">
                     <dt class="num fl">{{ forloop.counter }}</dt>
-                    <dd>
+                    <dd style="float:left ;padding-left:10px;padding-top: 8px; width:150px">
                         <a href="{% url 'blog:blog_detail' curent_blog.id %}"><h1>{{ curent_blog.title }}</h1></a>
                     </dd>
                 </dl>
