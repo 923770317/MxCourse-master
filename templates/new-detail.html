@@ -1,7 +1,8 @@
 ﻿{% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}blog详情{% endblock %}
+{% block title %}新闻详情{% endblock %}
 {% block custom_bread %}
+
 <section>
         <div class="wp">
             <ul  class="crumbs">
@@ -13,21 +14,28 @@
     </section>
 {% endblock %}
 
+{% block style %}
+    <style type="text/css">
+        p {font-family: '微软雅黑';font-size: 17px;line-height: 32px;color:#222;}
+        #container {width:50%;margin:10px auto;padding:0 20px;background:#EFEFEF;border-color:#C9C9C9;}
+        h1 {font-size:22px;font-family:'微软雅黑';color:red;padding-top: 10px; text-align: center; border-bottom:2px #999 solid;padding-bottom: 10px;}
+        h4 {font-size:13px;background: #fff;padding:2px 5px;border:1px #bbb dotted;}
+        #container img {border:5px white solid;padding: 1px;background: #ED9394}
+    </style>
+{% endblock %}
+
+
 {% block content %}
 <section>
-	<div class="wp butler-detail-box butler-diaryd-box clearfix">
-        <div class="fl list">
-            <div class="butler_detail_list clearfix">
-                {{ new.title }} &nbsp; {{ new.author.nick_name }} &nbsp; {{ new.create_time }}
-                </div>
-            </div>
+	<div id="container">
+
+       <h1 >{{ new.title }}</h1>    &nbsp;
+
+        <h4 >作者：{{ new.author.nick_name }} {{ new.create_time }}</h4>
+
             <div class="butler_detail_cont clearfix">
                 <div class="left layout">
-				<div class="head">
-					<ul class="tab_header">
-						<li class="active"><a href="{% url 'course:course_list'  %}">内容</a> </li>
-					</ul>
-				</div>
+
                     <div class="companycenter">
                         <div class="group_list brief">
                             {% autoescape off %}
