@@ -34,8 +34,8 @@ class Blog(models.Model):
     create_time = models.DateTimeField(verbose_name=u'创建时间', default=timezone.now)
     modify_time =  models.DateTimeField(verbose_name=u'创建时间', auto_now=True)
     click_nums = models.IntegerField(verbose_name=u'点击量', default=150)
-    blog_type = models.ForeignKey(BlogType, verbose_name='博客类别')
-    author = models.ForeignKey(UserProfile, verbose_name=u"作者", editable=False)
+    blog_type = models.ForeignKey(BlogType, verbose_name='博客类别',null=True,blank=True)
+    blog_author = models.ForeignKey(UserProfile, verbose_name=u"作者", editable=False,null=True,blank=True)
 
     class Meta:
         verbose_name = u"博客"
@@ -44,14 +44,15 @@ class Blog(models.Model):
     def __unicode__(self):
         return self.title
 
+
 class Comment(models.Model):
     '''
      评论
     '''
     blog = models.ForeignKey(Blog, verbose_name=u'博客')
-    content = models.TextField(verbose_name='评论内容')
+    content = models.TextField(verbose_name=u'评论内容')
     create_time = models.DateTimeField(verbose_name=u'创建时间', default=timezone.now)
-    author = models.ForeignKey(UserProfile, verbose_name=u"作者", editable=False)
+    comment_author = models.ForeignKey(UserProfile, verbose_name=u"作者", editable=False,null=True,blank=True)
 
     class Meta:
         verbose_name = u"评论"
