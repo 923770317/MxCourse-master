@@ -13,21 +13,31 @@
     </section>
 {% endblock %}
 
+{% block style %}
+    <style type="text/css">
+        p {font-family: '微软雅黑';font-size: 17px;line-height: 32px;color:#222;}
+        #container {width:80%;margin:10px auto;padding:20px;border-color:#C9C9C9;}
+        h1 {font-size:22px;font-family:'微软雅黑';color:red;padding-top: 10px; text-align: center; border-bottom:2px #999 solid;padding-bottom: 10px;}
+        h4 {font-size:13px;background: #fff;padding:2px 5px;border:1px #bbb dotted;}
+        #container img {border:5px white solid;padding: 1px;background: #ED9394}
+        .bgcolorEFEFEF{background: #EFEFEF}
+        .marginauto {margin: 10px auto; padding: 20px;}
+        .listeach {padding: 10px 0 0px 0px;border-top: 1px solid #dedede;line-height: 15px;}
+        .postcommenttitle {margin: 10px 0px;}
+        {#.rightform {height: 180px;width: 90%;padding: 5%;#}
+}
+    </style>
+{% endblock %}
+
 {% block content %}
 <section>
-	<div class="wp butler-detail-box butler-diaryd-box clearfix">
-        <div class="fl list">
-            <div class="butler_detail_list clearfix">
-                {{ blog.title }} &nbsp; {{ blog.author.nick_name }} &nbsp; {{ blog.create_time }}
-                </div>
-            </div>
-            <div class="butler_detail_cont clearfix">
+    <div id="container">
+    <div class="contentblock bgcolorEFEFEF marginauto">
+    <h1 >{{ blog.title }}</h1>
+    <h4 >作者：{{ blog.blog_author.nick_name }} &nbsp; {{ blog.create_time }} &nbsp; 评论：{{ comments.count }}</h4>
+         <div class="butler_detail_cont clearfix">
                 <div class="left layout">
-				<div class="head">
-					<ul class="tab_header">
-						<li class="active"><a href="{% url 'course:course_list'  %}">内容</a> </li>
-					</ul>
-				</div>
+
                     <div class="companycenter">
                         <div class="group_list brief">
                             {% autoescape off %}
@@ -35,35 +45,35 @@
                             {% endautoescape %}
                         </div>
                     </div>
-                 <div>
-                {% for comment in comments %}
-                    <p>{{ comment.author.nick_name }}<p>  <p>{{ comment.create_time }}</p>
-                    {{ comment.content }}
-                {% endfor %}
-            </div>
-            <div class="right companyright">
-			<div class="head"></div>
-			<form class="rightform" id="jsStayForm">
-				<div>
+                 </div>
 
-                     <textarea rows="5" cols="40" name="content" id="commentContent">内容</textarea>
+          </div>
+    </div>
+                <!-- //评论列表start -->
+        <div class="commentlist bgcolorEFEFEF marginauto">
+            <h3>共{{ comments.count }}条评论</h3>
+                    {% for comment in comments %}
+                        <p class="listeach">{{ comment.comment_author.nick_name }} &nbsp; {{ comment.create_time }}<p>
+                        {{ comment.content }}
+                    {% endfor %}
+            </div>
+             <!-- //评论列表end -->
+
+
+        <!-- //发布评论start -->
+        <div class="right bgcolorEFEFEF marginauto">
+            <div class="head postcommenttitle">我也说两句</div>
+            <form class="rightform" id="jsStayForm">
+                <div>
+                    <textarea rows="5" cols="40" name="content" id="commentContent">内容</textarea>
                     <input type="hidden" name="blog_id" value="{{ blog.id }}" />
                 </div>
-
                 <p class="error company-tips" id="jsCompanyTips"></p>
-				<input class="btn" type="text" id="jsStayBtn" value="提交评论 >" />
-                {% csrf_token %}
+                <input class="btn" type="button" id="jsStayBtn" value="提交评论 >" />
+               {% csrf_token %}
             </form>
-		</div>
-
-                <!--<div class="pageturn">-->
-                    <!--<ul class="pagelist">-->
-                        <!--<li class="active"><a href="?page=1">1</a></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            </div>
-            </div>
         </div>
+        <!-- //发布评论end -->
 
 	</div>
 </section>
