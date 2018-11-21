@@ -9,8 +9,8 @@ class BlogTypeAdmin(object):
     search_fields = ['name']
 
 class CommentAdmin(object):
-    list_display = ['blog','content','author','create_time']
-    list_filter = ['blog', 'author']
+    list_display = ['blog','content','comment_author','create_time']
+    list_filter = ['blog', 'comment_author']
 
     def save_models(self):
         '''
@@ -22,9 +22,9 @@ class CommentAdmin(object):
         obj.save()
 
 class BlogAdmin(object):
-    list_display = ['title','blog_type','author','create_time','modify_time']
+    list_display = ['title','blog_type','blog_author','create_time','modify_time']
     search_fields = ['title']
-    list_filter = ['blog_type','author']
+    list_filter = ['blog_type','blog_author']
     style_fields = {'content':'ueditor'}
 
     def save_models(self):
