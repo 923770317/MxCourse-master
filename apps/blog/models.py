@@ -36,7 +36,7 @@ class Blog(models.Model):
     click_nums = models.IntegerField(verbose_name=u'点击量', default=150)
     blog_type = models.ForeignKey(BlogType, verbose_name='博客类别',null=True,blank=True)
     blog_author = models.ForeignKey(UserProfile, verbose_name=u"作者", editable=False,null=True,blank=True)
-
+    brief = models.CharField(max_length=150, verbose_name=u'简介',null=True,blank=True)
     class Meta:
         verbose_name = u"博客"
         verbose_name_plural = verbose_name

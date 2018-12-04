@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+<meta charset="UTF-8">
+<title>{% block title %}周辰晨的个人博客--首页{% endblock %}</title>
+<meta name="keywords" content="个人博客,周辰晨个人博客,性能测试,Python自动化" />
+<meta name="description" content="周辰晨人博客，专注于性能测试和Python自动化知识的传播！让我们成为行业的布道者！" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="{% static 'css/base.css' %}" rel="stylesheet">
+<link href="{% static 'css/index.css' %}" rel="stylesheet">
+<link href="{% static 'css/m.css' %}" rel="stylesheet">
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery.easyfader.min.js' %}"></script>
+<!--[if lt IE 9]>
+<script src="{% static 'js/modernizr.js' %}"></script>
+<![endif]-->
+<script>
+window.onload = function ()
+{
+	var oH2 = document.getElementsByTagName("h2")[0];
+	var oUl = document.getElementsByTagName("ul")[0];
+	oH2.onclick = function ()
+	{
+		var style = oUl.style;
+		style.display = style.display == "block" ? "none" : "block";
+		oH2.className = style.display == "block" ? "open" : ""
+	}
+}
+</script>
+</head>
+<body>
+<header>
+  <div id="mnav">
+    <h2><span class="navicon"></span></h2>
+    <ul>
+      <li><a href="index.html">网站首页</a></li>
+      <li><a href="about.html">关于我</a></li>
+      <li><a href="list.html">BLOG</a></li>
+      <li><a href="list.html">新闻</a></li>
+    </ul>
+  </div>
+  <div class="topnav">
+    <nav>
+      <ul>
+      <li><a href="index.html">网站首页</a></li>
+      <li><a href="about.html">关于我</a></li>
+          <li><a href="list.html">BLOG</a></li>
+      <li><a href="list.html">新闻</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<article>
+{% block content %}{% endblock %}
+</article>
+<footer>
+  <p>Design by <a href="/">周辰晨的个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+</footer>
+</body>
+</html>

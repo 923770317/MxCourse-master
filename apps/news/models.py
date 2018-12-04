@@ -20,7 +20,7 @@ class News(models.Model):
                            filePath='blog/ueditor/', default='')
     is_banner = models.BooleanField(default=False, verbose_name=u"是否轮播")
     image = models.ImageField(max_length=100, upload_to='news/%Y%m', verbose_name=u"轮播图", blank=True, null=True)
-
+    brief = models.CharField(max_length=50, verbose_name=u'简介',null= True,blank=True)
     class Meta:
         verbose_name = u"新闻"
         verbose_name_plural = verbose_name

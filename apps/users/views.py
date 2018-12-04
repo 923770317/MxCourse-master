@@ -16,6 +16,8 @@ from operation.models import UserCourse, UserFavorite, UserMessage
 from organization.models import CourseOrg, Teacher
 from courses.models import Course
 from news.models import News
+from blog.models import Blog
+
 from .models import Banner
 # Create your views here.
 
@@ -341,17 +343,15 @@ class IndexView(View):
     首页
     """
     def get(self, request):
-        # all_banners = Banner.objects.all().order_by("index")
-        all_banners = News.objects.filter(is_banner=True).order_by('-create_time')
-        courses = Course.objects.filter(is_banner=False)[:5]
-        banner_courses = Course.objects.filter(is_banner=True)[:3]
-        course_orgs = CourseOrg.objects.all()[:3]
 
-        return render(request, "index.html", {
+        all_banners = News.objects.filter(is_banner=True).order_by('-create_time')
+        all_news = News.objects.all().order_by('-create_time')[:3]
+        hot_blogs = Blog.objects.all().order_by('click_nums')[:3]
+
+        return render(request, "index1.html", {
             "all_banners": all_banners,
-            "courses": courses,
-            "banner_courses": banner_courses,
-            "course_orgs": course_orgs,
+            "hot_blogs":hot_blogs,
+            "all_news":all_news,
         })
 
 

@@ -1,0 +1,79 @@
+{% extends "new_base.html" %}
+{% block title %}{% endblock %}
+{% load  staticfiles %}
+
+{% block content %}
+  <div class="banner">
+    <div id="sucaihuo" class="fader">
+{#        <img class="slide" src="images/banner01.jpg">#}
+{#        <img class="slide" src="images/banner02.jpg">#}
+{#        <img class="slide" src="images/banner03.jpg">#}
+        {% for new in all_banners %}
+             <a href="{% url 'news:new_detail' new.id %}">
+                            <img class="slide" src="{{ MEDIA_URL }}{{ new.image }}"/>
+              </a>
+        {% endfor  %}
+      <div class="fader_controls">
+        <div class="page prev" data-target="prev">&lsaquo;</div>
+        <div class="page next" data-target="next">&rsaquo;</div>
+        <ul class="pager_list">
+        </ul>
+      </div>
+    </div>
+    <script>
+$(function() {
+	$('#sucaihuo').easyFader();
+});
+</script> 
+  </div>
+  
+  <div class="newblogs">
+    <h2 class="hometitle">最新新闻</h2>
+    <ul>
+      {% for temp_new in all_news %}
+          <li>
+        <h3 class="blogtitle"><span><a href="/jstt/css3/" title="css3" target="_blank"  class="classname">热门新闻</a></span><a href="/jstt/css3/2018-03-26/812.html" target="_blank" >{{ temp_new.title }}</a></h3>
+        <div class="bloginfo">
+            {% if temp_new.image != "" %}
+            <span class="blogpic"><a href="{% url 'news:new_detail' temp_new.id %}" title="{{ temp_new.title }}"><img src="{{ MEDIA_URL }}{{ temp_new.image }}" alt="{{ temp_new.title }}" /></a></span>
+            {%  endif %}
+            <p>{{ temp_new.brief }}</p>
+        </div>
+        <div class="autor"><span class="lm f_l"></span><span class="dtime f_l">{{ temp_new.create_time}}</span><span class="viewnum f_l">浏览 <a href="/">{{ temp_new.click_nums }}</a></span><span class="f_r"><a href="{% url 'news:new_detail' temp_new.id %}" class="more">阅读原文</a></span></div>
+        <div class="line"></div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="rbox">
+    <div class="paihang">
+      <h2 class="hometitle">热门博客</h2>
+      <ul>
+
+        {% for temp_blog in hot_blogs %}
+            <li><b><a href={% url 'blog:blog_detail' temp_blog.id %} target="_blank">{{ temp_blog.title }}</a></b>
+                <p>
+{#                    <i><img src="{{ MEDIA_URL }}{{ temp_blog }}"  /></i>#}
+                    {{ temp_blog.brief}}
+                </p>
+            </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="links">
+      <h2 class="hometitle">友情推荐</h2>
+      <ul>
+        <li><a href="http://www.yangqq.com">周CC的博客</a></li>
+        <li><a href="http://www.yangqq.com/download/">周CC的博客</a></li>
+        <li><a href="http://www.yangqq.com/link.html">周CC的博客</a></li>
+      </ul>
+    </div>
+    <div class="weixin">
+      <h2 class="hometitle">微信公众号</h2>
+      <ul>
+        <img src="images/wx.jpg">
+      </ul>
+    </div>
+  </div>
+{% endblock %}
