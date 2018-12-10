@@ -19,14 +19,14 @@
 {% block content %}
     <div class="infos">
       <div class="newsview">
-        <h2 class="intitle">您现在的位置是：<a href="/">网站首页</a>&nbsp;&gt;&nbsp;<a href="{% url "blog:blog_list" %}">BLOG</a> &gt; {{ blog.title }}</h2>
-        <h3 class="news_title">{{ blog.title }}</h3>
-        <div class="news_author"><span class="au01">{{ blog.blog_author }}</span><span class="au02">{{ blog.create_time }}</span><span class="au03">共<b>{{ blog.click_nums }}</b>人围观</span></div>
+        <h2 class="intitle">您现在的位置是：<a href="/">网站首页</a>&nbsp;&gt;&nbsp;<a href="{% url "news:news_list" %}">新闻列表</a> &gt; {{ new.title }}</h2>
+        <h3 class="news_title">{{ new.title }}</h3>
+        <div class="news_author"><span class="au01">{{ new.author }}</span><span class="au02">{{ new.create_time }}</span><span class="au03">共<b>{{ new.click_nums }}</b>人围观</span></div>
 {#        <div class="tags"><a href="/">����</a> <a href="/" target="_blank">����</a> <a href="/" target="_blank">MWC</a> <a href="/" target="_blank">С��</a> <a href="/" target="_blank">�˶����</a></div>#}
-        <div class="news_about"><strong>简介</strong>{{ blog.brief }}</div>
+        <div class="news_about"><strong>简介</strong>{{ new.brief }}</div>
         <div class="news_infos">
            {% autoescape off %}
-             {{ blog.content }}
+             {{ new.content }}
            {% endautoescape %}
         </div>
       </div>

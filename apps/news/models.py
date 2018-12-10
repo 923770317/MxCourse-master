@@ -8,11 +8,27 @@ from DjangoUeditor.models import UEditorField
 # Create your models here.
 
 
+class NewType(models.Model):
+    '''
+    新闻类型
+    '''
+    name = models.CharField(max_length=10,verbose_name=u'新闻类型')
+    is_delete = models.BooleanField(default=False, verbose_name=u"是否删除")
+
+    class Meta:
+        verbose_name = u"新闻类型"
+        verbose_name_plural = verbose_name
+
+    def __unicode__(self):
+        return self.name
+
+
 class News(models.Model):
     '''
      新闻
     '''
     title = models.CharField(max_length=50,verbose_name=u'标题')
+    type = models.ForeignKey(NewType,verbose_name=u"新闻类型", null=True, blank=True)
     author = models.ForeignKey(UserProfile, verbose_name=u"作者", editable=False)
     create_time = models.DateTimeField(verbose_name=u'发布时间', default=timezone.now)
     click_nums = models.IntegerField(verbose_name=u'点击量', default=150)

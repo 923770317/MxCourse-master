@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views.generic.base import View
 from django.http import HttpResponse
 from django.db.models import Q
-from .models import News
+from .models import News,NewType
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 
 
@@ -16,6 +16,7 @@ class NewsListViews(View):
     '''
     def get(self,request):
         all_news = News.objects.all()
+        all_types = NewType.objects.all()
 
         current_env = "news"
 
@@ -32,6 +33,11 @@ class NewsListViews(View):
         # 新闻排行榜
         sorted_news = News.objects.order_by('-click_nums')[:3]
 
+        # 取出类别
+        type = request.GET.get('type', '')
+        if type:
+            all_news = all_news.filter(type=type)
+
         # 对新闻进行分页
         try:
             page = request.GET.get('page', 1)
@@ -42,12 +48,13 @@ class NewsListViews(View):
         news_count = all_news.count()
         p = Paginator(all_news, 3, request=request)
         all_news = p.page(page)
-        return render(request,'news-list.html',{
+        return render(request,'new_news_list.html',{
             'all_news':all_news,
             'sorted_news':sorted_news,
             'sort':sort,
             'current_nav':current_env,
             'news_count':news_count,
+            'all_types':all_types,
         })
 
 
@@ -57,6 +64,6 @@ class NewDetailView(View):
         new.click_nums +=1
         new.save()
 
-        return render(request, 'new-detail.html', {
+        return render(request, 'new_info.html', {
             'new': new,
         })

@@ -37,6 +37,7 @@ class Blog(models.Model):
     blog_type = models.ForeignKey(BlogType, verbose_name='博客类别',null=True,blank=True)
     blog_author = models.ForeignKey(UserProfile, verbose_name=u"作者", editable=False,null=True,blank=True)
     brief = models.CharField(max_length=150, verbose_name=u'简介',null=True,blank=True)
+    image = models.ImageField(max_length=100, upload_to='blog/%Y%m', verbose_name=u"博客插图", blank=True, null=True)
     class Meta:
         verbose_name = u"博客"
         verbose_name_plural = verbose_name

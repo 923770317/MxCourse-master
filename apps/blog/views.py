@@ -21,7 +21,7 @@ class BlogsListVies(View):
         # 关键词搜索功能
         search_keywords = request.GET.get('keywords', '')
         if search_keywords:
-            all_blogs = all_blogs.filter(Q(title__icontains=search_keywords) | Q(content__icontains=search_keywords))
+            all_blogs = all_blogs.filter(Q(title__icontains=search_keywords) | Q(brief__icontains=search_keywords))
 
         #取出类别
         type = request.GET.get('type','')
@@ -45,10 +45,10 @@ class BlogsListVies(View):
             page = 1
         # Provide Paginator with the request object for complete querystring generation
 
-        p = Paginator(all_blogs, 3, request=request)
+        p = Paginator(all_blogs, 5, request=request)
         blogs = p.page(page)
 
-        return render(request, "blog-list1.html",
+        return render(request, "list.html",
                       {"all_blogs": blogs,
                        "all_types": all_types,
                        "type": type,
@@ -66,7 +66,7 @@ class BlogDetailView(View):
         blog.click_nums += 1
         blog.save()
 
-        return render(request,'blog-detail.html',{
+        return render(request,'info.html',{
           'blog': blog,
           'comments':comments,
         })

@@ -1,5 +1,5 @@
 {% extends "new_base.html" %}
-{% block title %}CCTESTER - 博客LIST{% endblock %}
+{% block title %}CCTESTER - 新闻LIST{% endblock %}
 {% load  staticfiles %}
 {% block custom_js %}
 <script src="{% static 'js/selectUi.js' %}" type='text/javascript'></script>
@@ -15,12 +15,12 @@
 
 
 {% block content %}
-  <h2 class="litle"><span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。</span>学无止境</h2>
+  <h2 class="litle"><span>好咖啡要和朋友一起品尝，好新闻也要和其他人一起分享。</span>即时资讯</h2>
   <div class="navtab">
     <div class="search">
 {#      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">#}
         <input name="keyboard" id="search_keywords" class="input_text" value="请输入关键词" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字'}" type="text">
-        <input name="type" id ="search_type" value="blog" type="hidden">
+        <input name="type" id ="search_type" value="news" type="hidden">
         <input name="Submit" class="input_submit" id = "jsSearchBtn"  value="搜索" type="submit">
 {#      </form>#}
     </div>
@@ -41,25 +41,25 @@ obj.id='pagecurrent'
 </script> 
   </div> 
   <div class="newblogs">
-    <h2 class="hometitle">最新博客</h2>
+    <h2 class="hometitle">最新新闻</h2>
     <ul>
-      {% for blog in all_blogs.object_list %}
+      {% for new in all_news.object_list %}
           <li>
-        <h3 class="blogtitle"><span><a href="#" title="css3" target="_blank"  class="classname">个人博客</a></span><a href="{% url "blog:blog_detail" blog.id %}" target="_blank" >{{ blog.title }}</a></h3>
-        <div class="bloginfo"><span class="blogpic"><a href="{% url "blog:blog_detail" blog.id %}" title="{{ blog.title }}"><img src="{{ MEDIA_URL }}{{ blog.image }}" alt="{{ blog.title }}" /></a></span>
-          <p>{{ blog.brief }}</p>
+        <h3 class="blogtitle"><span><a href="#" title="css3" target="_blank"  class="classname">{{ new.type.name }}</a></span><a href="{% url "news:new_detail" new.id %}" target="_blank" >{{ new.title }}</a></h3>
+        <div class="bloginfo"><span class="blogpic"><a href="{% url "news:new_detail" new.id %}" title="{{ new.title }}"><img src="{{ MEDIA_URL }}{{ new.image }}" alt="{{ new.title }}" /></a></span>
+          <p>{{ new.brief }}</p>
         </div>
-        <div class="autor"><span class="lm f_l"></span><span class="dtime f_l">{{ blog.create_time }}</span><span class="viewnum f_l">浏览 ({{ blog.click_nums }})</span><span class="f_r"><a href="{% url "blog:blog_detail" blog.id %}" class="more">阅读原文</a></span></div>
+        <div class="autor"><span class="lm f_l"></span><span class="dtime f_l">{{ new.create_time }}</span><span class="viewnum f_l">浏览 ({{ new.click_nums }})</span><span class="f_r"><a href="{% url "news:new_detail" new.id %}" class="more">阅读原文</a></span></div>
         <div class="line"></div>
       </li>
 
       {% endfor %}
     </ul>
-     <div class="pagelist"><a title="Total record">&nbsp;<b>共{{ blog_nums }}篇</b> </a>&nbsp;&nbsp;&nbsp;
-         {% if all_blogs.has_previous %}
-                    <a href="?{{ all_blogs.previous_page_number.querystring }}">上一页</a>&nbsp;
+     <div class="pagelist"><a title="Total record">&nbsp;<b>共{{ news_count }}篇</b> </a>&nbsp;&nbsp;&nbsp;
+         {% if all_news.has_previous %}
+                    <a href="?{{ all_news.previous_page_number.querystring }}">上一页</a>&nbsp;
          {% endif %}
-          {% for page in all_blogs.pages %}
+          {% for page in all_news.pages %}
                 {% if page %}
                     {% ifequal page all_blogs.number %}
                         <a href="?{{ page.querystring }}">{{ page }}</a>
@@ -70,8 +70,8 @@ obj.id='pagecurrent'
                     <b><a href="">...</a></b>
                 {% endif %}
             {% endfor %}
-            {% if all_orgs.has_next %}
-                <a href="?{{ all_blogs.next_page_number.querystring }}">下一页</a>
+            {% if all_news.has_next %}
+                <a href="?{{ all_news.next_page_number.querystring }}">下一页</a>
             {% endif %}
      </div>
 
@@ -79,11 +79,11 @@ obj.id='pagecurrent'
   </div>
   <div class="rbox">
     <div class="paihang">
-      <h2 class="hometitle">热门博客</h2>
+      <h2 class="hometitle">热门新闻</h2>
       <ul>
-          {% for temp_blog in hot_blogs %}
-               <li><b><a href="{% url "blog:blog_detail" temp_blog.id %}" target="_blank">{{ temp_blog.title }}</a></b>
-                <p> {% if temp_blog.image != "" %}<i><img src="{{ MEDIA_URL }}{{ temp_blog.image }}"  /></i>{% endif %} {{ temp_blog.brief }}</p>
+          {% for temp_new in sorted_news %}
+               <li><b><a href="{% url "news:new_detail" temp_new.id %}" target="_blank">{{ temp_new.title }}</a></b>
+                <p> {% if temp_new.image != "" %}<i><img src="{{ MEDIA_URL }}{{ temp_new.image }}"  /></i>{% endif %} {{ temp_new.brief }}</p>
                 </li>
           {% endfor %}
 

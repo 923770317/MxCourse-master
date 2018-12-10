@@ -346,7 +346,7 @@ class IndexView(View):
 
         all_banners = News.objects.filter(is_banner=True).order_by('-create_time')
         all_news = News.objects.all().order_by('-create_time')[:3]
-        hot_blogs = Blog.objects.all().order_by('click_nums')[:3]
+        hot_blogs = Blog.objects.all().order_by('-create_time')[:5]
 
         return render(request, "index1.html", {
             "all_banners": all_banners,

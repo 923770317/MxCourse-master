@@ -60,7 +60,8 @@ function getCookie(name) {
 
 //顶部搜索栏搜索方法
 function search_click(){
-    var type = $('#jsSelectOption').attr('data-value'),
+    var  type = $('#search_type').val(),
+        // type = $('#jsSelectOption').attr('data-value'),
         keywords = $('#search_keywords').val(),
         request_url = '';
     if(keywords == ""){

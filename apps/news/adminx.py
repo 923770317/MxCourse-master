@@ -5,12 +5,18 @@
 # @Author  : derek.zhang
 
 import xadmin
-from .models import News
+from .models import News,NewType
+
+class NewTypeAdmin(object):
+    list_display = ['name','is_delete']
+    search_fields = ['name']
+
+
 
 class NewsAdmin(object):
-    list_display = ['title',  'author', 'create_time','is_banner', 'click_nums',]
+    list_display = ['title',  'author', 'create_time','is_banner', 'click_nums','type']
     search_fields = ['title', 'content']
-    list_filter = ['author', 'create_time','is_banner']
+    list_filter = ['author', 'create_time','is_banner','type']
     style_fields = {'content': 'ueditor'}
 
     def save_models(self):
@@ -24,3 +30,4 @@ class NewsAdmin(object):
 
 
 xadmin.site.register(News,NewsAdmin)
+xadmin.site.register(NewType,NewTypeAdmin)

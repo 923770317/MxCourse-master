@@ -1,13 +1,10 @@
 {% extends "new_base.html" %}
-{% block title %}{% endblock %}
+{% block title %}CCTESTER - 首页{% endblock %}
 {% load  staticfiles %}
 
 {% block content %}
   <div class="banner">
     <div id="sucaihuo" class="fader">
-{#        <img class="slide" src="images/banner01.jpg">#}
-{#        <img class="slide" src="images/banner02.jpg">#}
-{#        <img class="slide" src="images/banner03.jpg">#}
         {% for new in all_banners %}
              <a href="{% url 'news:new_detail' new.id %}">
                             <img class="slide" src="{{ MEDIA_URL }}{{ new.image }}"/>
@@ -28,18 +25,18 @@ $(function() {
   </div>
   
   <div class="newblogs">
-    <h2 class="hometitle">最新新闻</h2>
+    <h2 class="hometitle">最新博客</h2>
     <ul>
-      {% for temp_new in all_news %}
+      {% for temp_blog in hot_blogs %}
           <li>
-        <h3 class="blogtitle"><span><a href="/jstt/css3/" title="css3" target="_blank"  class="classname">热门新闻</a></span><a href="/jstt/css3/2018-03-26/812.html" target="_blank" >{{ temp_new.title }}</a></h3>
+        <h3 class="blogtitle"><span><a href="/jstt/css3/" title="css3" target="_blank"  class="classname">热门博客</a></span><a href="/jstt/css3/2018-03-26/812.html" target="_blank" >{{ temp_blog.title }}</a></h3>
         <div class="bloginfo">
-            {% if temp_new.image != "" %}
-            <span class="blogpic"><a href="{% url 'news:new_detail' temp_new.id %}" title="{{ temp_new.title }}"><img src="{{ MEDIA_URL }}{{ temp_new.image }}" alt="{{ temp_new.title }}" /></a></span>
+            {% if temp_blog.image != "" %}
+            <span class="blogpic"><a href="{% url 'blog:blog_detail' temp_blog.id %}" title="{{ temp_blog.title }}"><img src="{{ MEDIA_URL }}{{ temp_blog.image }}" alt="{{ temp_blog.title }}" /></a></span>
             {%  endif %}
-            <p>{{ temp_new.brief }}</p>
+            <p>{{ temp_blog.brief }}</p>
         </div>
-        <div class="autor"><span class="lm f_l"></span><span class="dtime f_l">{{ temp_new.create_time}}</span><span class="viewnum f_l">浏览 <a href="/">{{ temp_new.click_nums }}</a></span><span class="f_r"><a href="{% url 'news:new_detail' temp_new.id %}" class="more">阅读原文</a></span></div>
+        <div class="autor"><span class="lm f_l"></span><span class="dtime f_l">{{ temp_blog.create_time}}</span><span class="viewnum f_l">浏览 <a href="/">{{ temp_blog.click_nums }}</a></span><span class="f_r"><a href="{% url 'blog:blog_detail' temp_blog.id %}" class="more">阅读原文</a></span></div>
         <div class="line"></div>
       </li>
       {% endfor %}
@@ -47,14 +44,16 @@ $(function() {
   </div>
   <div class="rbox">
     <div class="paihang">
-      <h2 class="hometitle">热门博客</h2>
+      <h2 class="hometitle">热门新闻</h2>
       <ul>
 
-        {% for temp_blog in hot_blogs %}
-            <li><b><a href={% url 'blog:blog_detail' temp_blog.id %} target="_blank">{{ temp_blog.title }}</a></b>
+        {% for temp_new in all_news %}
+            <li><b><a href={% url 'news:new_detail' temp_new.id %} target="_blank">{{ temp_new.title }}</a></b>
                 <p>
-{#                    <i><img src="{{ MEDIA_URL }}{{ temp_blog }}"  /></i>#}
-                    {{ temp_blog.brief}}
+                    {% if temp_new.image != "" %}
+                        <i><img src="{{ MEDIA_URL }}{{ temp_new.image }}"  /></i>
+                    {% endif %}
+                    {{ temp_new.brief}}
                 </p>
             </li>
         {% endfor %}
@@ -72,7 +71,7 @@ $(function() {
     <div class="weixin">
       <h2 class="hometitle">微信公众号</h2>
       <ul>
-        <img src="images/wx.jpg">
+        <img src="{% static 'images/wx.jpg' %}">
       </ul>
     </div>
   </div>
