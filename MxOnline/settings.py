@@ -101,20 +101,20 @@ WSGI_APPLICATION = 'MxOnline.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'new_web_online',
-    #     'USER': 'root',
-    #     'PASSWORD': '123456',
-    #     'HOST': '47.100.205.82'
-    #     # 'OPTIONS': {
-    #     #     "init_command": "SET foreign_key_checks = 0;",
-    #     # }
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'new_template_blog',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': '47.100.205.82'
+        # 'OPTIONS': {
+        #     "init_command": "SET foreign_key_checks = 0;",
+        # }
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
 }
 
 
