@@ -45,7 +45,7 @@ obj.id='pagecurrent'
     <ul>
       {% for blog in all_blogs.object_list %}
           <li>
-        <h3 class="blogtitle"><span><a href="#" title="css3" target="_blank"  class="classname">个人博客</a></span><a href="{% url "blog:blog_detail" blog.id %}" target="_blank" >{{ blog.title }}</a></h3>
+        <h3 class="blogtitle"><span>{{ blog.blog_type.name }}</span><a href="{% url "blog:blog_detail" blog.id %}" target="_blank" >{{ blog.title }}</a></h3>
         <div class="bloginfo"><span class="blogpic"><a href="{% url "blog:blog_detail" blog.id %}" title="{{ blog.title }}"><img src="{{ MEDIA_URL }}{{ blog.image }}" alt="{{ blog.title }}" /></a></span>
           <p>{{ blog.brief }}</p>
         </div>
