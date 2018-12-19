@@ -77,6 +77,10 @@ class RegisterView(View):
             return render(request,"register.html", {"register_form": register_form})
 
 
+class AboutView(View):
+
+    def get(self,request):
+        return render(request,"about.html",{})
 
 
 class LoginView(View):

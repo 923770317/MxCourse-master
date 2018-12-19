@@ -19,6 +19,7 @@ class NewsListViews(View):
         all_types = NewType.objects.all()
 
         current_env = "news"
+      
 
         # 关键词
         search_keywords = request.GET.get('keywords','')

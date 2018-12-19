@@ -24,7 +24,7 @@ import xadmin
 # django处理静态文件内容
 from django.views.static import serve
 
-from users.views import LoginView, RegisterView, ActiveUserView, ForgetPwdView, RestView, ModifyPwdView, LogoutView, IndexView
+from users.views import LoginView, RegisterView, ActiveUserView, ForgetPwdView, RestView, ModifyPwdView, LogoutView, IndexView,AboutView
 from organization.views import OrgView
 from MxOnline.settings import MEDIA_ROOT, STATIC_ROOT
 
@@ -41,6 +41,7 @@ urlpatterns = [
     url(r'^forget/$', ForgetPwdView.as_view(), name="forget_pwd"),
     url(r'^reset/(?P<reset_code>.*)/$', RestView.as_view(), name="reset_pwd"),
     url(r'^modify_pwd/$', ModifyPwdView.as_view(), name="modify_pwd"),
+    url(r'^about/$', AboutView.as_view(), name="about"),
 
     # 课程机构URL配置
     url(r'^org/', include('organization.urls', namespace="org")),
@@ -75,13 +76,4 @@ handler404 = 'users.views.page_no_found'
 
 # 全局500
 handler500 = 'users.views.page_error'
-
-'''
-user_login和user_login()区别：
-user_login代表指向这个函数
-user_login()代表调用这个函数
-LoginView.as_view():把LoginView类转换为一个as_view,返回一个函数句柄,此处要调用用方法，所以要()。
-(?P):提取一个变量当做参数
-(?P<active_code>.*):正则表达式.*匹配到的内容填充到<active_code>中
-'''
 

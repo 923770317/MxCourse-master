@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="{% static 'css/base.css' %}" rel="stylesheet">
 <link href="{% static 'css/index.css' %}" rel="stylesheet">
+<link href="{% static 'css/about.css' %}" rel="stylesheet">
 <link href="{% static 'css/info.css' %}" rel="stylesheet">
 <link href="{% static 'css/m.css' %}" rel="stylesheet">
 <script src="{% static 'js/jquery.min.js' %}"></script>
@@ -20,11 +21,7 @@
 <script>
     SyntaxHighlighter.all();//执行代码高亮
 </script>
----------------------
-作者：pzl_pzl
-来源：CSDN
-原文：https://blog.csdn.net/pzl_pzl/article/details/80806896
-版权声明：本文为博主原创文章，转载请附上博文链接！
+
 
 <!--[if lt IE 9]>
 <script src="{% static 'js/modernizr.js' %}"></script>
@@ -52,7 +49,7 @@ window.onload = function ()
         <li><a href="/">网站首页</a></li>
         <li><a href="{% url "blog:blog_list" %}">BLOG</a></li>
         <li><a href="{% url "news:news_list" %}">新闻</a></li>
-        <li><a href="about.html">关于我</a></li>
+        <li><a href="{% url "about" %}">关于我</a></li>
     </ul>
   </div>
   <div class="topnav">
@@ -61,7 +58,7 @@ window.onload = function ()
           <li><a href="/">网站首页</a></li>
           <li><a href="{% url "blog:blog_list" %}">BLOG</a></li>
           <li><a href="{% url "news:news_list" %}">新闻</a></li>
-          <li><a href="about.html">关于我</a></li>
+          <li><a href="{% url "about" %}">关于我</a></li>
       </ul>
     </nav>
   </div>

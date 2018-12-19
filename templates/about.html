@@ -1,109 +1,55 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="gb2312">
-<title>¹ØÓÚÎÒ_µ¥Ò³_ÑîÇà¸öÈË²©¿Í - Ò»¸öÕ¾ÔÚwebÇ°¶ËÉè¼ÆÖ®Â·µÄÅ®¼¼ÊõÔ±¸öÈË²©¿ÍÍøÕ¾</title>
-<meta name="keywords" content="¸öÈË²©¿Í,ÑîÇà¸öÈË²©¿Í,¸öÈË²©¿ÍÄ£°å,ÑîÇà" />
-<meta name="description" content="ÑîÇà¸öÈË²©¿Í£¬ÊÇÒ»¸öÕ¾ÔÚwebÇ°¶ËÉè¼ÆÖ®Â·µÄÅ®³ÌÐòÔ±¸öÈËÍøÕ¾£¬Ìá¹©¸öÈË²©¿ÍÄ£°åÃâ·Ñ×ÊÔ´ÏÂÔØµÄ¸öÈËÔ­´´ÍøÕ¾¡£" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/base.css" rel="stylesheet">
-<link href="css/about.css" rel="stylesheet">
-<link href="css/m.css" rel="stylesheet">
-<!--[if lt IE 9]>
-<script src="js/modernizr.js"></script>
-<![endif]-->
-<script>
-window.onload = function ()
-{
-	var oH2 = document.getElementsByTagName("h2")[0];
-	var oUl = document.getElementsByTagName("ul")[0];
-	oH2.onclick = function ()
-	{
-		var style = oUl.style;
-		style.display = style.display == "block" ? "none" : "block";
-		oH2.className = style.display == "block" ? "open" : ""
-	}
-}
-</script>
-</head>
-<body>
-<header>
-  <div id="mnav">
-    <h2><span class="navicon"></span></h2>
-    <ul>
-      <li><a href="index.html">ÍøÕ¾Ê×Ò³</a></li>
-      <li><a href="about.html">¹ØÓÚÎÒ</a></li>
-      <li><a href="share.html">Ä£°å·ÖÏí</a></li>
-      <li><a href="list.html">Ñ§ÎÞÖ¹¾³</a></li>
-      <li><a href="list.html">ÂýÉú»î</a></li>
-      <li><a href="link.html">²©¿Íµ¼º½</a></li>
-      <li><a href="gbook.html">ÁôÑÔ</a></li>
-    </ul>
-  </div>
-  <nav>
-    <ul>
-      <li><a href="index.html">ÍøÕ¾Ê×Ò³</a></li>
-      <li><a href="about.html">¹ØÓÚÎÒ</a></li>
-      <li><a href="share.html">Ä£°å·ÖÏí</a></li>
-      <li><a href="list.html">Ñ§ÎÞÖ¹¾³</a></li>
-      <li><a href="list.html">ÂýÉú»î</a></li>
-      <li><a href="link.html">²©¿Íµ¼º½</a></li>
-      <li><a href="gbook.html">ÁôÑÔ</a></li>
-    </ul>
-  </nav>
-</header>
-<article>
- <h2 class="litle"><span>Ïñ¡°²Ý¸ù¡±Ò»Ñù£¬½ôÌù×ÅµØÃæ£¬µÍµ÷µÄ´æÔÚ£¬¶¬È¥´ºÀ´£¬¿ÝÈÙÎÞí¦¡£</span>¹ØÓÚÎÒ</h2>
+{% extends "new_base.html" %}
+{% block title %}CCTESTER - ï¿½ï¿½Ò³{% endblock %}
+{% load  staticfiles %}
+
+{% block content %}
+
+ <h2 class="litle"><span>åƒâ€œè‰æ ¹â€ä¸€æ ·ï¼Œç´§è´´ç€åœ°é¢ï¼Œä½Žè°ƒçš„å­˜åœ¨ï¼Œå†¬åŽ»æ˜¥æ¥ï¼Œæž¯è£æ— æ™ã€‚</span>å…³äºŽæˆ‘</h2>
  <div class="ab_box">
   <div class="leftbox">
       <div class="newsview">
         <div class="news_infos">
-         <p>ÑîÇà£¬Å®£¬Ò»¸ö80ºó²Ý¸ùÅ®Õ¾³¤£¡09ÄêÈëÐÐ¡£Ò»Ö±Ç±ÐÄÑÐ¾¿webÇ°¶Ë¼¼Êõ£¬Ò»±ß¹¤×÷Ò»±ß»ýÀÛ¾­Ñé£¬·ÖÏíÒ»Ð©¸öÈË²©¿ÍÄ£°å£¬ÒÔ¼°SEOÓÅ»¯µÈÐÄµÃ¡£ÎÒÈëÐÐÔç£¬´ó¼ÒÒ²Ç×ÇÐµÄ½ÐÎÒ&ldquo;Çà½ã&rdquo;¡£<br />
+         <p>CCTESTERè‡´åŠ›äºŽæŽ¨åŠ¨å…¬ç›Šæ€§çš„æµ‹è¯•æŠ€æœ¯ç¤¾åŒºï¼Œä¿ƒè¿›ITæµ‹è¯•äººå‘˜çš„èŒä¸šç´ è´¨å‘å±•ã€‚<br />
 <br />
-SEO·Ü¶·ÁË½«½üÁ½ÄêÊ±¼ä£¬¸öÈË²©¿ÍÍøÕ¾°Ù¶ÈÅÅÃûÒ²´ÓÖ®Ç°µÄ30Ò³ºó£¬ÅÅµ½ÁËµÚÒ»Ò³¡£ÆÚ¼äÓÐºÜ¶àµÄ²»ÈÝÒ×£¬µ«ÊÇ¶¼Ã»ÓÐ·ÅÆú¹ý¡£ÈëÁËÕâÒ»ÐÐ£¬¾ÍÉîÉîµÄÏ²»¶ÉÏËü¡£ÎÒÏ²»¶Ò»¾ä»°&ldquo;Ú¤Ú¤ÖÐ¸ÃÀ´ÔòÀ´£¬ÎÞ´¦¿ÉÌÓ&rdquo;¡£<br />
+æˆ‘ä»¬çš„åˆå§‹æˆå‘˜å‡æ¥è‡ªä¸€çº¿äº’è”ç½‘å…¬å¸ï¼Œæœ‰ä¸°å¯Œçš„å®žæˆ˜ç»éªŒ ï¼Œä½†è¿™å¹¶éžå…³é”®å› ç´ ï¼Œæœ€é‡è¦çš„æ˜¯æˆ‘ä»¬ä¹äºŽåˆ†äº«ï¼Œç¤¾åŒºçš„å…³é”®è¯æ˜¯Shareï¼Œå¹¶é¼“åŠ±é€šè¿‡æŠ€æœ¯æ”¹è¿›æµ‹è¯•å·¥ä½œã€‚<br />
 <br />
-½ü¼¸ÄêÎÒÒ²·¢ÏÖ¸öÈË²©¿ÍÅÅÇ°¼¸Ò³µÄÒ²ÓÐºÜ¶àÊÇÎÒ×ö¹ýµÄÄ£°å£¬¸ÐÐ»¸÷Î»Õ¾³¤µÄÐÀÉÍ£¬ÎÒ×ÐÏ¸¿´¹ýËûÃÇµÄÍøÕ¾¡£ËûÃÇÔÚÎÒÔ­Ä£°åµÄ»ù´¡ÉÏÓÐÐÞ¸Ä£¬¶øÇÒËûÃÇ×öµÄÔ­´´ÄÚÈÝ¶¼ÊÇÖµµÃÒ»¶ÁµÄ¡£ÓÐÊ±ºòÉõÖÁÅÅÃû¶¼³¬¹ýÁËÎÒ¸öÈË²©¿ÍÍøÕ¾µÄÅÅÃû¡£<br />
+æˆ‘ä»¬æ‹’ç»è¿‡åº¦çš„å¹æ°´ï¼Œå¹¶åŠªåŠ›å‘ˆçŽ°æ›´å¤šæœ‰ä»·å€¼çš„åˆ†äº«ï¼Œä½œä¸ºæµ‹è¯•éƒ½åº”å½“è€å¾—ä½å¯‚å¯žï¼Œå®ˆå¾—ä½ç¹åŽï¼<br />
 <br />
-ÏÖÔÚºÜ¶àÈËÏòÎÒÇë½ÌÈçºÎ×öºÃSEO£¬ÎÒÏëËµµÄÊÇ£¬Ò»ÊÇ&ldquo;´úÂë&rdquo;£¬Ò»¶¨Òª¼òµ¥£¬²¼¾ÖÒªºÏÀí¡£¶þÊÇ&ldquo;ÄÚÈÝ&rdquo;£¬Ò»¶¨ÒªÓÐÔ­´´£¬Î±Ô­´´Ò²ÊÇ¿ÉÒÔµÄ¡£ÈýÊÇ&ldquo;³ÖÐø&rdquo;£¬ÕâÊÇÒ»¸ö³ÖÐøÐÔ¹ý³Ì£¬Ò»¶¨ÒªÓÐÄÍÐÄ£¬SEO²»ÊÇÂíÉÏÉúÐ§µÄ¡£<br />
+è®©æˆ‘ä»¬ä¸€èµ·å…±å‹‰ï¼ï¼ï¼Let's Goï¼ï¼ï¼<br />
 <br />
-×Ô´ÓÈëÁËÕâÒ»ÐÐ£¬Ò²½»µ½ÁË²»ÉÙÅóÓÑ£¬QQÈºÒ²²»¶ÏµÄ×³´óÆðÀ´£¬280998807(½»Á÷Èº <span style="color:#FF0000;">ÒÑÂúÔ±</span>)&nbsp; 280998843£¨¼¼ÊõÈº£©£¬ÈºÀïµÄÐ¡»ï°éÃÇÒ²ºÜ»ý¼«µÄ°ïÖúÐÂÅóÓÑ½â¾öÎÊÌâ£¬Èç¹ûÄãÏë¼ÓÈëÎÒÃÇ£¬Õâ¸ö´ó¼ÒÍ¥µÄÃÅ£¬ÓÀÔ¶¸øÄã³¨¿ª£¡ÁíÍâÎ¢ÐÅÈºÒÑÓÚ2018.4.13ÈÕ¿ªÍ¨£¨ÒÑÂú100£¬Ö»½ÓÊÜÈºÖ÷ÑûÇë£¬¿É¼ÓÎÒ¸öÈËÎ¢ÐÅ½øÈº ¡£ÎÒµÄ¸öÈËÎ¢ÐÅºÅ yangqq_1987£©</p>
+è‡ªä»Žå…¥äº†è¿™ä¸€è¡Œï¼Œä¹Ÿäº¤åˆ°äº†ä¸å°‘æœ‹å‹ï¼ŒQQç¾¤ä¹Ÿä¸æ–­çš„å£®å¤§èµ·æ¥ï¼Œ293549845ï¼ˆæŠ€æœ¯ç¾¤ï¼‰ï¼Œç¾¤é‡Œçš„å°ä¼™ä¼´ä»¬ä¹Ÿå¾ˆç§¯æžçš„å¸®åŠ©æ–°æœ‹å‹è§£å†³é—®é¢˜ï¼Œå¦‚æžœä½ æƒ³åŠ å…¥æˆ‘ä»¬ï¼Œè¿™ä¸ªå¤§å®¶åº­çš„é—¨ï¼Œæ°¸è¿œç»™ä½ æ•žå¼€ï¼</p>
         </div>
     </div>
     <div class="meandblog">
-      <h2>ÎÒºÍÎÒµÄ²©¿Í</h2>
+      <h2>æˆ‘å’Œæˆ‘çš„åšå®¢</h2>
       <ul>
-<li><a href="http://www.yangqq.com/jstt/bj/2015-01-09/740.html" target="_blank">¡¾´Ò´ÒÄÇÐ©Äê¡¿×Ü½á¸öÈË²©¿Í¾­ÀúµÄÕâËÄÄê</a></li>
-<li><a href="http://www.yangqq.com/jstt/bj/2014-11-06/732.html" target="_blank">·ÖÏíÎÒµÄ¸öÈË²©¿Í·ÃÎÊÁ¿ÈçºÎ×öµ½IP´Ó10µ½600µÄ</a></li>
-<li><a href="http://www.yangqq.com/news/s/2014-01-08/635.html" target="_blank">¸öÈË²©¿Í´Ó¼ò²»·±</a></li>
-<li><a href="http://www.yangqq.com/jstt/bj/2013-06-18/285.html" target="_blank">Èç¹û¸öÈË²©¿ÍÍøÕ¾ÔÙÃ»ÓÐ¼ÛÖµ£¬Äã»¹»á¼á³ÖÂð£¿</a></li>
-<li><a href="http://www.yangqq.com/news/life/2013-06-06/68.html" target="_blank">WebÖ®Â·£¬¾­ÀúÁËÐÄËáÖ®ºó</a></li>
-<li><a href="http://www.yangqq.com/jstt/web/2014-01-18/644.html" target="_blank">ÎÒµÄ¸öÈË²©¿ÍÖ®¡ª¡ª°¢ÀïÔÆ¿Õ¼äÑ¡Ôñ</a></li>
+{#<li><a href="http://www.yangqq.com/jstt/bj/2015-01-09/740.html" target="_blank">ï¿½ï¿½ï¿½Ò´ï¿½ï¿½ï¿½Ð©ï¿½ê¡¿ï¿½Ü½ï¿½ï¿½ï¿½Ë²ï¿½ï¿½Í¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></li>#}
+{#<li><a href="http://www.yangqq.com/jstt/bj/2014-11-06/732.html" target="_blank">ï¿½ï¿½ï¿½ï¿½ï¿½ÒµÄ¸ï¿½ï¿½Ë²ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IPï¿½ï¿½10ï¿½ï¿½600ï¿½ï¿½</a></li>#}
+{#<li><a href="http://www.yangqq.com/news/s/2014-01-08/635.html" target="_blank">ï¿½ï¿½ï¿½Ë²ï¿½ï¿½Í´Ó¼ò²»·ï¿½</a></li>#}
+{#<li><a href="http://www.yangqq.com/jstt/bj/2013-06-18/285.html" target="_blank">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë²ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾ï¿½ï¿½Ã»ï¿½Ð¼ï¿½Öµï¿½ï¿½ï¿½ã»¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></li>#}
+{#<li><a href="http://www.yangqq.com/news/life/2013-06-06/68.html" target="_blank">WebÖ®Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½</a></li>#}
+{#<li><a href="http://www.yangqq.com/jstt/web/2014-01-18/644.html" target="_blank">ï¿½ÒµÄ¸ï¿½ï¿½Ë²ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¿Õ¼ï¿½Ñ¡ï¿½ï¿½</a></li>#}
       </ul>
     </div>
   </div>
   <div class="rightbox">
     <div class="aboutme">
-      <h2 class="hometitle">¹ØÓÚÎÒ</h2>
-      <div class="avatar"> <img src="images/b04.jpg"> </div>
+      <h2 class="hometitle">å…³äºŽæˆ‘</h2>
+      <div class="avatar"> <img src="{% static 'images/b04.jpg' %}"> </div>
       <div class="ab_con">
- <p>ÍøÃû£ºdancesmile | ÑîÇà</p>
-        <p>Ö°Òµ£ºWebÇ°¶ËÉè¼ÆÊ¦¡¢ÍøÒ³Éè¼Æ </p>
-        <p>¸öÈËÎ¢ÐÅ£ºyangqq_1987</p>
-        <p>ÓÊÏä£ºdancesmiling@qq.com</p>
+ <p>ç½‘åï¼šCC</p>
+        <p>èŒä¸šï¼šæ€§èƒ½æµ‹è¯•å·¥ç¨‹å¸ˆ</p>
+        <p>ä¸ªäººå¾®ä¿¡ï¼šcctester</p>
+        <p>é‚®ç®±ï¼š448972995@qq.com</p>
 
       </div>
     </div>
     <div class="weixin">
-      <h2 class="hometitle">¹Ù·½Î¢ÐÅ</h2>
+      <h2 class="hometitle">å®˜æ–¹å¾®ä¿¡</h2>
       <ul>
-        <img src="images/wx.jpg">
+        <img src="{% static 'images/wx.jpg' %}">
       </ul>
     </div>
   </div>
  </div>
-</article>
-<footer>
-  <p>Design by <a href="/">ÑîÇà¸öÈË²©¿Í</a> <a href="/">ÊñICP±¸11002373ºÅ-1</a></p>
-</footer>
-</body>
-</html>
+{% endblock %}
