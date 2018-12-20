@@ -61,11 +61,10 @@ $(function() {
     </div>
 
     <div class="links">
-      <h2 class="hometitle">友情推荐</h2>
+      <h2 class="hometitle">传送门</h2>
       <ul>
-        <li><a href="https://blog.csdn.net/" target="_blank">CSDN</a></li>
-        <li><a href="https://www.cnblogs.com/" target="_blank">博客园</a></li>
-        <li><a href="http://www.51testing.com/html/index.html" target="_blank">51testing</a></li>
+        <li><a href="{% url 'blog:blog_list' %}?type=1" target="_blank">Python基础</a></li>
+        <li><a href="{% url 'blog:blog_list' %}?type=2" target="_blank">Jmeter基础</a></li>
       </ul>
     </div>
     <div class="weixin">
