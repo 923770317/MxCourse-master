@@ -1,6 +1,10 @@
 {% extends "new_base.html" %}
-{% block title %}CCTESTER - ��ҳ{% endblock %}
+{% block title %}CCTESTER - 关于我{% endblock %}
 {% load  staticfiles %}
+
+{% block custom_js %}
+    <link href="{% static 'css/about.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
 
