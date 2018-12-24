@@ -2,6 +2,8 @@
 {% block title %}CCTESTER - 首页{% endblock %}
 {% load  staticfiles %}
 
+
+
 {% block content %}
   <div class="banner">
     <div id="sucaihuo" class="fader">
@@ -61,16 +63,21 @@ $(function() {
     </div>
 
     <div class="links">
-      <h2 class="hometitle">传送门</h2>
+      <h2 class="hometitle">专栏</h2>
       <ul>
         <li><a href="{% url 'blog:blog_list' %}?type=1" target="_blank">Python基础</a></li>
         <li><a href="{% url 'blog:blog_list' %}?type=2" target="_blank">Jmeter基础</a></li>
       </ul>
     </div>
     <div class="weixin">
-      <h2 class="hometitle">微信公众号</h2>
+      <h2 class="hometitle">免费公开课直播群</h2>
+        <div class="ab_con">
+          <p>QQ群：293549845</p>
+        <p>介绍：本群针对自动化测试，性能进行技术交流，希望大家一起进步，共同提高。</p>
+
+      </div>
       <ul>
-        <img src="{% static 'images/wx.jpg' %}">
+        <img src="{% static 'images/QQ.png' %}">
       </ul>
     </div>
   </div>

@@ -1,5 +1,5 @@
 {% extends "new_base.html" %}
-{% block title %}CCTESTER - 博客LIST{% endblock %}
+{% block title %}CCTESTER - 专栏{% endblock %}
 {% load  staticfiles %}
 {% block custom_js %}
 <script src="{% static 'js/selectUi.js' %}" type='text/javascript'></script>
@@ -26,7 +26,7 @@
     </div>
 
     <ul class="navlist" id="pageContent">
-        <li><a href="?">全部</a></li>
+{#        <li><a href="?">全部</a></li>#}
         {% for type in all_types %}
             <li><a href="?type={{ type.id }}">{{ type.name }}</a></li>
         {% endfor %}
@@ -46,7 +46,7 @@ obj.id='pagecurrent'
       {% for blog in all_blogs.object_list %}
           <li>
         <h3 class="blogtitle"><span>{{ blog.blog_type.name }}</span><a href="{% url "blog:blog_detail" blog.id %}" target="_blank" >{{ blog.title }}</a></h3>
-        <div class="bloginfo"><span class="blogpic"><a href="{% url "blog:blog_detail" blog.id %}" title="{{ blog.title }}"><img src="{{ MEDIA_URL }}{{ blog.image }}" alt="{{ blog.title }}" /></a></span>
+        <div class="bloginfo">{% if blog.image != "" %}<span class="blogpic"> <a href="{% url "blog:blog_detail" blog.id %}" title="{{ blog.title }}"><img src="{{ MEDIA_URL }}{{ blog.image }}" alt="{{ blog.title }}" /></a></span>{% endif %}
           <p>{{ blog.brief }}</p>
         </div>
         <div class="autor"><span class="lm f_l"></span><span class="dtime f_l">{{ blog.create_time }}</span><span class="viewnum f_l">浏览 ({{ blog.click_nums }})</span><span class="f_r"><a href="{% url "blog:blog_detail" blog.id %}" class="more">阅读原文</a></span></div>
@@ -92,9 +92,14 @@ obj.id='pagecurrent'
 
     
     <div class="weixin">
-      <h2 class="hometitle">微信公众号</h2>
+     <h2 class="hometitle">免费公开课直播群</h2>
+        <div class="ab_con">
+          <p>QQ群：293549845</p>
+        <p>介绍：本群针对自动化测试，性能进行技术交流，希望大家一起进步，共同提高。</p>
+
+      </div>
       <ul>
-        <img src="{% static 'images/wx.jpg' %}">
+        <img src="{% static 'images/QQ.png' %}">
       </ul>
     </div>
   </div>

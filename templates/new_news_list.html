@@ -1,5 +1,5 @@
 {% extends "new_base.html" %}
-{% block title %}CCTESTER - 新闻LIST{% endblock %}
+{% block title %}CCTESTER - 动态{% endblock %}
 {% load  staticfiles %}
 {% block custom_js %}
 <script src="{% static 'js/selectUi.js' %}" type='text/javascript'></script>
@@ -15,7 +15,7 @@
 
 
 {% block content %}
-  <h2 class="litle"><span>好咖啡要和朋友一起品尝，好新闻也要和其他人一起分享。</span>即时资讯</h2>
+  <h2 class="litle"><span>好咖啡要和朋友一起品尝，好新闻也要和其他人一起分享。</span>即时动态</h2>
   <div class="navtab">
     <div class="search">
 {#      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">#}
@@ -26,7 +26,6 @@
     </div>
 
     <ul class="navlist" id="pageContent">
-        <li><a href="?">全部</a></li>
         {% for type in all_types %}
             <li><a href="?type={{ type.id }}">{{ type.name }}</a></li>
         {% endfor %}
@@ -41,7 +40,7 @@ obj.id='pagecurrent'
 </script> 
   </div> 
   <div class="newblogs">
-    <h2 class="hometitle">最新新闻</h2>
+    <h2 class="hometitle">最新动态</h2>
     <ul>
       {% for new in all_news.object_list %}
           <li>
@@ -92,9 +91,14 @@ obj.id='pagecurrent'
 
     
     <div class="weixin">
-      <h2 class="hometitle">微信公众号</h2>
+     <h2 class="hometitle">免费公开课直播群</h2>
+        <div class="ab_con">
+          <p>QQ群：293549845</p>
+        <p>介绍：本群针对自动化测试，性能进行技术交流，希望大家一起进步，共同提高。</p>
+
+      </div>
       <ul>
-        <img src="{% static 'images/wx.jpg' %}">
+        <img src="{% static 'images/QQ.png' %}">
       </ul>
     </div>
   </div>
