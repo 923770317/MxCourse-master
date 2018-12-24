@@ -18,7 +18,7 @@ class CommentAdmin(object):
         '''
         obj = self.new_obj
         request = self.request
-        obj.author = request.user
+        obj.comment_author = request.user
         obj.save()
 
 class BlogAdmin(object):
@@ -33,7 +33,7 @@ class BlogAdmin(object):
         '''
         obj = self.new_obj
         request = self.request
-        obj.author = request.user
+        obj.blog_author = request.user
         obj.save()
 
     def queryset(self):
