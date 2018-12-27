@@ -4,8 +4,9 @@ from django.shortcuts import render
 from django.views.generic.base import View
 from django.http import HttpResponse
 from django.db.models import Q
-from .models import News,NewType
+from .models import News,NewType,Sentence
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
+import random
 
 
 # Create your views here.
@@ -17,9 +18,14 @@ class NewsListViews(View):
     def get(self,request):
         all_news = News.objects.all()
         all_types = NewType.objects.all()
-
         current_env = "news"
-      
+
+        # 随机每日一句
+        randomInt = random.randint(0,Sentence.objects.all().count())
+        try:
+            sentence = Sentence.objects.get(id=randomInt)
+        except Sentence.DoesNotExist:
+            sentence = Sentence.objects.get(id=1)
 
         # 关键词
         search_keywords = request.GET.get('keywords','')
@@ -56,6 +62,7 @@ class NewsListViews(View):
             'current_nav':current_env,
             'news_count':news_count,
             'all_types':all_types,
+            'sentence':sentence,
         })
 
 

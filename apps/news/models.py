@@ -23,6 +23,21 @@ class NewType(models.Model):
         return self.name
 
 
+class Sentence(models.Model):
+    '''
+    每日一句
+    '''
+    content = models.CharField(max_length=150, verbose_name=u'每日一句')
+
+    class Meta:
+        verbose_name = u'每日一句'
+        verbose_name_plural = verbose_name
+
+    def __unicode__(self):
+        return self.content
+
+
+
 class News(models.Model):
     '''
      新闻

@@ -8,6 +8,8 @@ class BlogTypeAdmin(object):
     list_display = ['name','is_delete']
     search_fields = ['name']
 
+
+
 class CommentAdmin(object):
     list_display = ['blog','content','comment_author','create_time']
     list_filter = ['blog', 'comment_author']

@@ -6,6 +6,8 @@ from django.http import HttpResponse
 from django.db.models import Q
 from .models import BlogType,Blog,Comment
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
+import random
+from news.models import Sentence
 
 
 
@@ -17,6 +19,14 @@ class BlogsListVies(View):
         all_blogs = Blog.objects.all().order_by('-create_time')
         all_types = BlogType.objects.all()
         hot_blogs = Blog.objects.all().order_by('click_nums')[:3]
+
+        # 随机每日一句
+        randomInt = random.randint(0, Sentence.objects.all().count())
+        try:
+            sentence = Sentence.objects.get(id=randomInt)
+        except Sentence.DoesNotExist:
+            sentence = Sentence.objects.get(id=1)
+
 
         # 关键词搜索功能
         search_keywords = request.GET.get('keywords', '')
@@ -54,7 +64,9 @@ class BlogsListVies(View):
                        "type": type,
                        "hot_blogs": hot_blogs,
                         "blog_nums":blog_nums,
-                       "sort": sort})
+                       "sort": sort,
+                       'sentence':sentence,
+                       })
 
 
 

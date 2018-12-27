@@ -5,12 +5,16 @@
 # @Author  : derek.zhang
 
 import xadmin
-from .models import News,NewType
+from .models import News,NewType,Sentence
 
 class NewTypeAdmin(object):
     list_display = ['name','is_delete']
     search_fields = ['name']
 
+
+class SentenceAdmin(object):
+    list_display = ['content']
+    search_fields = ['content']
 
 
 class NewsAdmin(object):
@@ -28,6 +32,6 @@ class NewsAdmin(object):
         obj.author = request.user
         obj.save()
 
-
+xadmin.site.register(Sentence,SentenceAdmin)
 xadmin.site.register(News,NewsAdmin)
 xadmin.site.register(NewType,NewTypeAdmin)
