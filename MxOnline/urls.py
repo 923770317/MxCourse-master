@@ -58,6 +58,9 @@ urlpatterns = [
     # 用户
     url(r'^users/', include('users.urls', namespace="users")),
 
+    # 杂七杂吧
+    url(r'^impurity',include('impurity.urls',namespace='impurity')),
+
     # media的url配置，图片上传的url路径
     url(r'media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
 

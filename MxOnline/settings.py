@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'blog',
     'DjangoUeditor',
     'news',
+    'impurity',
 ]
 
 # 重写用户模型
@@ -102,15 +103,15 @@ WSGI_APPLICATION = 'MxOnline.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'new_template_blog',
-        'USER': 'root',
-        'PASSWORD': '123456',
-        'HOST': '47.100.205.82'
-        # 'OPTIONS': {
-        #     "init_command": "SET foreign_key_checks = 0;",
-        # }
-    }
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'new_template_blog',
+            'USER': 'root',
+            'PASSWORD': '123456',
+            'HOST': '47.100.205.82'
+            # 'OPTIONS': {
+            #     "init_command": "SET foreign_key_checks = 0;",
+            # }
+        }
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),

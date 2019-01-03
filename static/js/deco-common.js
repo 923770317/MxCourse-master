@@ -71,6 +71,8 @@ function search_click(){
         request_url = "/news/list?keywords="+keywords
     }else if(type == "blog"){
         request_url = "/blogs/list?keywords="+keywords
+    }else if(type == "sharegoods"){
+        request_url = "/impurity/list?keywords="+keywords
     }
     window.location.href = request_url
 }

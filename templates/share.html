@@ -1,73 +1,25 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="gb2312">
-<title>Ä£°å·ÖÏí_ÑîÇà¸öÈË²©¿Í - Ò»¸öÕ¾ÔÚwebÇ°¶ËÉè¼ÆÖ®Â·µÄÅ®¼¼ÊõÔ±¸öÈË²©¿ÍÍøÕ¾</title>
-<meta name="keywords" content="¸öÈË²©¿Í,ÑîÇà¸öÈË²©¿Í,¸öÈË²©¿ÍÄ£°å,ÑîÇà" />
-<meta name="description" content="ÑîÇà¸öÈË²©¿Í£¬ÊÇÒ»¸öÕ¾ÔÚwebÇ°¶ËÉè¼ÆÖ®Â·µÄÅ®³ÌÐòÔ±¸öÈËÍøÕ¾£¬Ìá¹©¸öÈË²©¿ÍÄ£°åÃâ·Ñ×ÊÔ´ÏÂÔØµÄ¸öÈËÔ­´´ÍøÕ¾¡£" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/base.css" rel="stylesheet">
-<link href="css/share.css" rel="stylesheet">
-<link href="css/m.css" rel="stylesheet">
-<script src="js/scrollReveal.js"></script>
-<!--[if lt IE 9]>
-<script src="js/modernizr.js"></script>
-<![endif]-->
-<script>
-window.onload = function ()
-{
-	var oH2 = document.getElementsByTagName("h2")[0];
-	var oUl = document.getElementsByTagName("ul")[0];
-	oH2.onclick = function ()
-	{
-		var style = oUl.style;
-		style.display = style.display == "block" ? "none" : "block";
-		oH2.className = style.display == "block" ? "open" : ""
-	}
-}
-</script>
-</head>
-<body>
-<header>
-  <div id="mnav">
-    <h2><span class="navicon"></span></h2>
-    <ul>
-      <li><a href="index.html">ÍøÕ¾Ê×Ò³</a></li>
-      <li><a href="about.html">¹ØÓÚÎÒ</a></li>
-      <li><a href="share.html">Ä£°å·ÖÏí</a></li>
-      <li><a href="list.html">Ñ§ÎÞÖ¹¾³</a></li>
-      <li><a href="list.html">ÂýÉú»î</a></li>
-      <li><a href="link.html">²©¿Íµ¼º½</a></li>
-      <li><a href="gbook.html">ÁôÑÔ</a></li>
-    </ul>
-  </div>
-  <nav>
-    <ul>
-      <li><a href="index.html">ÍøÕ¾Ê×Ò³</a></li>
-      <li><a href="about.html">¹ØÓÚÎÒ</a></li>
-      <li><a href="share.html">Ä£°å·ÖÏí</a></li>
-      <li><a href="list.html">Ñ§ÎÞÖ¹¾³</a></li>
-      <li><a href="list.html">ÂýÉú»î</a></li>
-      <li><a href="link.html">²©¿Íµ¼º½</a></li>
-      <li><a href="gbook.html">ÁôÑÔ</a></li>
-    </ul>
-  </nav>
-</header>
-<article>
-  <h2 class="litle"><span>ºÃ¿§·ÈÒªºÍÅóÓÑÒ»ÆðÆ·³¢£¬ºÃ¡°Ä£°å¡±Ò²ÒªºÍÍ¬ÑùÏ²»¶ËüµÄÈËÒ»Æð·ÖÏí¡£</span>Ä£°å·ÖÏí</h2>
+{% extends "new_base.html" %}
+{% block title %}CCTESTER - èµ„æºåŒº{% endblock %}
+{% load  staticfiles %}
+{% block custom_js %}
+
+    <link href="{% static 'css/share.css' %}" rel="stylesheet">
+
+    <script src="{% static 'js/scrollReveal.js' %}"></script>
+
+{% endblock %}
+{% block content %}
+  <h2 class="litle"><span>{{ sentence.content }}</span>èµ„æºåŒº</h2>
   <div class="navtab">
     <div class="search">
-      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
-        <input name="keyboard" id="keyboard" class="input_text" value="ÇëÊäÈë¹Ø¼ü×Ö" style="color: rgb(153, 153, 153);" onfocus="if(value=='ÇëÊäÈë¹Ø¼ü×Ö'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='ÇëÊäÈë¹Ø¼ü×Ö'}" type="text">
-        <input name="show" value="title" type="hidden">
-        <input name="tempid" value="1" type="hidden">
-        <input name="tbname" value="news" type="hidden">
-        <input name="Submit" class="input_submit" value="ËÑË÷" type="submit">
-      </form>
+        <input name="keyboard" id="search_keywords" class="input_text" value="è¾“å…¥å…³é”®å­—" style="color: rgb(153, 153, 153);" onfocus="if(value=='ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½'}" type="text">
+        <input name="type" id ="search_type" value="sharegoods" type="hidden">
+        <input name="Submit" class="input_submit" value="æœç´¢" type="submit">
     </div>
     <ul class="navlist" id="pageContent">
-      <li><a href="list.html">¸öÈË²©¿ÍÄ£°å</a></li>
-      <li><a href="list2.html">¹úÍâhtmlÄ£°å</a></li>
+        {% for type in all_types %}
+            <li><a href="?type={{ type.id }}">{{ type.name }}</a></li>
+        {% endfor %}
     </ul>
 <script language="javascript"> 
 var obj=null;
@@ -79,98 +31,31 @@ obj.id='pagecurrent'
 </script>
   </div>
   <div class="mbbox">
-  <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb01.jpg" > </div>
-    <div class="mbtitle"> <a href="/">html5¸öÈË²©¿ÍÄ£°å¡¶ÉðÊ¿¡·</a> </div>
-    <p class="mbinfo">ÒòÆäÑÕÉ«Ö÷ÒªÊÇºÚ°×´îÅä,ÖØµãÍ»³öµÄÊÇÎÄ×ÖÄÚÈÝ,¾ÍÏñÊÇÒ»¸öÆÄÓÐÄÚº­µÄÉðÊ¿.ËùÒÔ´ËÄ£°åÖ÷ÌâÎª¡¶ÉðÊ¿¡·,¸öÈË²©¿ÍÄ£°åÖ÷Ìâ¡¶ÉðÊ¿¡·,´îÅäÁé¸ÐÀ´...</p>
-  </div>
-    <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb02.jpg" > </div>
-    <div class="mbtitle"><a href="/">html5¸öÈË²©¿ÍÄ£°å¡¶ÈçÓ°ËæÐÎ¡·</a> </div>
-    <p class="mbinfo">2014µÚ¶þ°æºÚÉ«Html5¸öÈË²©¿ÍÄ£°åÖ÷Ìâ¡¶ÈçÓ°ËæÐÎ¡·£¬Èç¾«Áé°ãµÄÓ°×Ó»á¸øÈËÒ»ÖÖÉñÃØµÄ¸Ð¾õ¡£Ò»ÕÅ¼ôÓ°Í¼ºÚ°×´îÅä£¬Èç¹ûÕû¸öÍøÕ¾ÓÃºÚ°×»ÒÈýÉ«...</p>
-  </div>
-    <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb03.jpg" > </div>
-    <div class="mbtitle"> <a href="/">html5¸öÈË²©¿ÍÄ£°å¡¶ÐÄÀ¶Ê±¼äÖá¡·</a> </div>
-    <p class="mbinfo">Html5+css3¸öÈË²©¿ÍÄ£°å£¬Ö÷Ìâ¡¶ÐÄÀ¶Ê±¼äÖá¡·£¬Ê¹ÓÃcss3¼¼ÊõÊµÏÖÍøÕ¾¶¯»­Ð§¹û£¬Ö÷ÒªÄ£¿éÊÇÊ±¼äÖá²¿·Ö.Ö÷ÌâÑÕÉ«ÎªÀ¶É«.Ä¿Ç°°æ±¾»¹ÔÚ²âÊÔµ±...</p>
-  </div>
-    <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb04.jpg" > </div>
-    <div class="mbtitle"> <a href="/">¹Åµä¸öÈË²©¿ÍÄ£°å¡¶½­ÄÏÄ«¾í¡·</a> </div>
-    <p class="mbinfo">ÒòÆäÑÕÉ«Ö÷ÒªÊÇºÚ°×´îÅä,ÖØµãÍ»³öµÄÊÇÎÄ×ÖÄÚÈÝ,¾ÍÏñÊÇÒ»¸öÆÄÓÐÄÚº­µÄÉðÊ¿.ËùÒÔ´ËÄ£°åÖ÷ÌâÎª¡¶ÉðÊ¿¡·,¸öÈË²©¿ÍÄ£°åÖ÷Ìâ¡¶ÉðÊ¿¡·,´îÅäÁé¸ÐÀ´...</p>
-  </div>
-    <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb05.jpg" > </div>
-    <div class="mbtitle"> <a href="/">ÇéÂÂ²©¿ÍÄ£°åÏµÁÐÖ®¡¶»ØÒä¡·</a> </div>
-    <p class="mbinfo">ÇéÂÂ²©¿ÍÄ£°åÏµÁÐÖ®¡¶»ØÒä¡·,·ÖÎªËÄ¸öÖ÷Òª²¿·Ö£¬ÕÕÆ¬Ç½¡¢ÇéÂÂ½éÉÜ¡¢Í¼ÎÄ×é¡¢×£¸£Ä£¿é¡£ÊÊºÏ°®É¹ÕÕÆ¬µÄÐ¡ÇéÂÂ...</p>
-  </div>
-    <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb06.jpg" > </div>
-    <div class="mbtitle"> <a href="/">ºÚÉ«ÖÊ¸ÐÊ±¼äÖá</a> </div>
-    <p class="mbinfo">ºÚÉ«Ê±¼äÖáhtml5¸öÈË²©¿ÍÄ£°åÑÕÉ«ÒÔºÚÉ«ÎªÖ÷É«£¬Ìí¼ÓÁË²ÊÉ«×÷ÎªÍøÒ³µÄÒ»¸öÁÁµã£¬µ¼º½¸ßÁÁÏÔÊ¾¡¢bannerÍ¼Æ¬Êó±ê»®¹ý...</p>
-  </div>
+  {% for good in all_goods.object_list %}
       <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb07.jpg" > </div>
-    <div class="mbtitle"> <a href="/">ÇéÂÂ²©¿ÍÄ£°åÏµÁÐÖ®¡¶»ØÒä¡·</a> </div>
-    <p class="mbinfo">ÇéÂÂ²©¿ÍÄ£°åÏµÁÐÖ®¡¶»ØÒä¡·,·ÖÎªËÄ¸öÖ÷Òª²¿·Ö£¬ÕÕÆ¬Ç½¡¢ÇéÂÂ½éÉÜ¡¢Í¼ÎÄ×é¡¢×£¸£Ä£¿é¡£ÊÊºÏ°®É¹ÕÕÆ¬µÄÐ¡ÇéÂÂ...</p>
-  </div>
-    <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb08.jpg" > </div>
-    <div class="mbtitle"> <a href="/">¸öÈË²©¿ÍÄ£°å¡¶²Ý¸ùÑ°ÃÎ¡·</a> </div>
-    <p class="mbinfo">ºÚÉ«Ê±¼äÖáhtml5¸öÈË²©¿ÍÄ£°åÑÕÉ«ÒÔºÚÉ«ÎªÖ÷É«£¬Ìí¼ÓÁË²ÊÉ«×÷ÎªÍøÒ³µÄÒ»¸öÁÁµã£¬µ¼º½¸ßÁÁÏÔÊ¾¡¢bannerÍ¼Æ¬Êó±ê»®¹ý...</p>
-  </div>
-    <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb01.jpg" > </div>
-    <div class="mbtitle"> <a href="/">html5¸öÈË²©¿ÍÄ£°å¡¶ÉðÊ¿¡·</a> </div>
-    <p class="mbinfo">ÒòÆäÑÕÉ«Ö÷ÒªÊÇºÚ°×´îÅä,ÖØµãÍ»³öµÄÊÇÎÄ×ÖÄÚÈÝ,¾ÍÏñÊÇÒ»¸öÆÄÓÐÄÚº­µÄÉðÊ¿.ËùÒÔ´ËÄ£°åÖ÷ÌâÎª¡¶ÉðÊ¿¡·,¸öÈË²©¿ÍÄ£°åÖ÷Ìâ¡¶ÉðÊ¿¡·,´îÅäÁé¸ÐÀ´...</p>
-  </div>
-    <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb02.jpg" > </div>
-    <div class="mbtitle"><a href="/">html5¸öÈË²©¿ÍÄ£°å¡¶ÈçÓ°ËæÐÎ¡·</a> </div>
-    <p class="mbinfo">2014µÚ¶þ°æºÚÉ«Html5¸öÈË²©¿ÍÄ£°åÖ÷Ìâ¡¶ÈçÓ°ËæÐÎ¡·£¬Èç¾«Áé°ãµÄÓ°×Ó»á¸øÈËÒ»ÖÖÉñÃØµÄ¸Ð¾õ¡£Ò»ÕÅ¼ôÓ°Í¼ºÚ°×´îÅä£¬Èç¹ûÕû¸öÍøÕ¾ÓÃºÚ°×»ÒÈýÉ«...</p>
-  </div>
-    <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb03.jpg" > </div>
-    <div class="mbtitle"> <a href="/">html5¸öÈË²©¿ÍÄ£°å¡¶ÐÄÀ¶Ê±¼äÖá¡·</a> </div>
-    <p class="mbinfo">Html5+css3¸öÈË²©¿ÍÄ£°å£¬Ö÷Ìâ¡¶ÐÄÀ¶Ê±¼äÖá¡·£¬Ê¹ÓÃcss3¼¼ÊõÊµÏÖÍøÕ¾¶¯»­Ð§¹û£¬Ö÷ÒªÄ£¿éÊÇÊ±¼äÖá²¿·Ö.Ö÷ÌâÑÕÉ«ÎªÀ¶É«.Ä¿Ç°°æ±¾»¹ÔÚ²âÊÔµ±...</p>
-  </div>
-    <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb04.jpg" > </div>
-    <div class="mbtitle"> <a href="/">¹Åµä¸öÈË²©¿ÍÄ£°å¡¶½­ÄÏÄ«¾í¡·</a> </div>
-    <p class="mbinfo">ÒòÆäÑÕÉ«Ö÷ÒªÊÇºÚ°×´îÅä,ÖØµãÍ»³öµÄÊÇÎÄ×ÖÄÚÈÝ,¾ÍÏñÊÇÒ»¸öÆÄÓÐÄÚº­µÄÉðÊ¿.ËùÒÔ´ËÄ£°åÖ÷ÌâÎª¡¶ÉðÊ¿¡·,¸öÈË²©¿ÍÄ£°åÖ÷Ìâ¡¶ÉðÊ¿¡·,´îÅäÁé¸ÐÀ´...</p>
-  </div>
-    <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb05.jpg" > </div>
-    <div class="mbtitle"> <a href="/">ÇéÂÂ²©¿ÍÄ£°åÏµÁÐÖ®¡¶»ØÒä¡·</a> </div>
-    <p class="mbinfo">ÇéÂÂ²©¿ÍÄ£°åÏµÁÐÖ®¡¶»ØÒä¡·,·ÖÎªËÄ¸öÖ÷Òª²¿·Ö£¬ÕÕÆ¬Ç½¡¢ÇéÂÂ½éÉÜ¡¢Í¼ÎÄ×é¡¢×£¸£Ä£¿é¡£ÊÊºÏ°®É¹ÕÕÆ¬µÄÐ¡ÇéÂÂ...</p>
-  </div>
-    <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb06.jpg" > </div>
-    <div class="mbtitle"> <a href="/">ºÚÉ«ÖÊ¸ÐÊ±¼äÖá</a> </div>
-    <p class="mbinfo">ºÚÉ«Ê±¼äÖáhtml5¸öÈË²©¿ÍÄ£°åÑÕÉ«ÒÔºÚÉ«ÎªÖ÷É«£¬Ìí¼ÓÁË²ÊÉ«×÷ÎªÍøÒ³µÄÒ»¸öÁÁµã£¬µ¼º½¸ßÁÁÏÔÊ¾¡¢bannerÍ¼Æ¬Êó±ê»®¹ý...</p>
-  </div>
-      <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb07.jpg" > </div>
-    <div class="mbtitle"> <a href="/">ÇéÂÂ²©¿ÍÄ£°åÏµÁÐÖ®¡¶»ØÒä¡·</a> </div>
-    <p class="mbinfo">ÇéÂÂ²©¿ÍÄ£°åÏµÁÐÖ®¡¶»ØÒä¡·,·ÖÎªËÄ¸öÖ÷Òª²¿·Ö£¬ÕÕÆ¬Ç½¡¢ÇéÂÂ½éÉÜ¡¢Í¼ÎÄ×é¡¢×£¸£Ä£¿é¡£ÊÊºÏ°®É¹ÕÕÆ¬µÄÐ¡ÇéÂÂ...</p>
-  </div>
-    <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-    <div class="mbimg"> <img src="images/mb08.jpg" > </div>
-    <div class="mbtitle"> <a href="/">¸öÈË²©¿ÍÄ£°å¡¶²Ý¸ùÑ°ÃÎ¡·</a> </div>
-    <p class="mbinfo">ºÚÉ«Ê±¼äÖáhtml5¸öÈË²©¿ÍÄ£°åÑÕÉ«ÒÔºÚÉ«ÎªÖ÷É«£¬Ìí¼ÓÁË²ÊÉ«×÷ÎªÍøÒ³µÄÒ»¸öÁÁµã£¬µ¼º½¸ßÁÁÏÔÊ¾¡¢bannerÍ¼Æ¬Êó±ê»®¹ý...</p>
-  </div>
+        <div class="mbimg"> <img src="{{ MEDIA_URL }}{{ good.image }}" > </div>
+        <div class="mbtitle"> <a href="/">{{ good.title }}</a> </div>
+        <p class="mbinfo">ç©ºç™½ï¼Œè¿˜æ²¡å¼€å‘å®Œæˆ</p>
+      </div>
+   {% endfor %}
   </div> 
-  <div class="pagelist"><a title="Total record">&nbsp;<b>43</b> </a>&nbsp;&nbsp;&nbsp;<b>1</b>&nbsp;<a href="/download/index_2.html">2</a>&nbsp;<a href="/download/index_2.html">ÏÂÒ»Ò³</a>&nbsp;<a href="/download/index_2.html">Î²Ò³</a></div>   
-</article>
-<footer>
-  <p>Design by <a href="/">ÑîÇà¸öÈË²©¿Í</a> <a href="/">ÊñICP±¸11002373ºÅ-1</a></p>
-</footer>
-</body>
-</html>
-<script>
-if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
-(function(){
-window.scrollReveal = new scrollReveal({reset: true});
-})();
-};
-</script>
+  <div class="pagelist"><a title="Total record">&nbsp;<b>å…±{{ goods_num }}</b> </a>&nbsp;&nbsp;&nbsp;
+         {% if all_goods.has_previous %}
+                    <a href="?{{ all_goods.previous_page_number.querystring }}">ä¸Šä¸€é¡µ</a>&nbsp;
+         {% endif %}
+          {% for page in all_goods.pages %}
+                {% if page %}
+                    {% ifequal page all_goods.number %}
+                        <a href="?{{ page.querystring }}">{{ page }}</a>
+                    {% else %}
+                        <a href="?{{ page.querystring }}" class="page">{{ page }}</a>
+                    {% endifequal %}
+                {% else %}
+                    <b><a href="">...</a></b>
+                {% endif %}
+            {% endfor %}
+            {% if all_goods.has_next %}
+                <a href="?{{ all_goods.next_page_number.querystring }}">ä¸‹ä¸€é¡µ</a>
+            {% endif %}
+     </div>
+{% endblock %}

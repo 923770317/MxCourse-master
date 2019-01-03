@@ -42,6 +42,7 @@ window.onload = function ()
         <li><a href="/">首页</a></li>
         <li><a href="{% url "blog:blog_list" %}?type=1">专栏</a></li>
         <li><a href="{% url "news:news_list" %}">动态</a></li>
+        <li><a href="{% url "impurity:goods_list" %}">资源区</a></li>
         <li><a href="{% url "about" %}">联系我</a></li>
     </ul>
   </div>
@@ -51,6 +52,7 @@ window.onload = function ()
           <li><a href="/">首页</a></li>
           <li><a href="{% url "blog:blog_list" %}?type=1">专栏</a></li>
           <li><a href="{% url "news:news_list" %}">动态</a></li>
+          <li><a href="{% url "impurity:goods_list" %}">资源区</a></li>
           <li><a href="{% url "about" %}">联系我</a></li>
       </ul>
     </nav>
@@ -60,7 +62,7 @@ window.onload = function ()
 {% block content %}{% endblock %}
 </article>
 <footer>
-  <p>Design by <a href="/">
+  <p>Design by CCTESTER <a href="/">
 
   </a> <a href="/">苏ICP备18066576号</a></p>
 </footer>
