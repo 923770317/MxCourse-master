@@ -9,7 +9,9 @@ from django.conf.urls import url,include
 from .views import *
 
 urlpatterns = [
+    # 分享列表
     url(r'^list/$', GoodsListView.as_view(), name="goods_list"),
-    # # 新闻详情
-    # url(r'^new/detail/(?P<id>\d+)/$', NewDetailView.as_view(), name="new_detail"),
+
+    # 分享详情
+    url(r'^detail/(?P<good_id>\d+)/$', GoodDetailView.as_view(), name="good_detail"),
 ]

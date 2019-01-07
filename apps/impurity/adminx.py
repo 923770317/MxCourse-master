@@ -5,7 +5,7 @@
 # @Date    : 2019-01-03
 # @Author  : derek.zhang
 
-import  xadmin
+import xadmin
 from .models import ShareType,Goods
 
 class ShareTypeAdmin(object):
@@ -17,6 +17,7 @@ class GoodsAdmin(object):
     list_display = ['title','type','is_free','url']
     search_fields = ['title','type','is_free']
     list_filter = ['type', 'is_free']
+    style_fields = {'content': 'ueditor'}
 
 
 xadmin.site.register(ShareType,ShareTypeAdmin)

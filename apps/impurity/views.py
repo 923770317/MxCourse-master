@@ -53,3 +53,16 @@ class GoodsListView(View):
                        'sentence': sentence,
                        'goods_num': goods_num,
                        })
+
+
+class GoodDetailView(View):
+    '''
+    分享详情
+    '''
+    def get(self,request,good_id):
+        good = Goods.objects.get(id=int(good_id))
+        good.view_nums += 1
+        good.save()
+        return render(request,'good_detail.html',{
+           'good':good,
+        })

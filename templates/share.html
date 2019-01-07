@@ -33,9 +33,9 @@ obj.id='pagecurrent'
   <div class="mbbox">
   {% for good in all_goods.object_list %}
       <div class="mbpic effect" data-scroll-reveal="enter from the bottom">
-        <div class="mbimg"> <img src="{{ MEDIA_URL }}{{ good.image }}" > </div>
-        <div class="mbtitle"> <a href="/">{{ good.title }}</a> </div>
-        <p class="mbinfo">空白，还没开发完成</p>
+        <div class="mbimg"> <a href="{% url 'impurity:good_detail' good.id %}"><img src="{{ MEDIA_URL }}{{ good.image }}" ></a> </div>
+        <div class="mbtitle"> <a href="{% url 'impurity:good_detail' good.id %}">{{ good.title }}</a> </div>
+        <p class="mbinfo">{{ good.brief }}</p>
       </div>
    {% endfor %}
   </div> 
