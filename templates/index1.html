@@ -31,7 +31,7 @@ $(function() {
     <ul>
       {% for temp_blog in hot_blogs %}
           <li>
-        <h3 class="blogtitle"><span>热门博客</span><a href="{% url 'blog:blog_detail' temp_blog.id %}" target="_blank" >{{ temp_blog.title }}</a></h3>
+        <h3 class="blogtitle"><span>{{ temp_blog.blog_type.name }}</span><a href="{% url 'blog:blog_detail' temp_blog.id %}" target="_blank" >{{ temp_blog.title }}</a></h3>
         <div class="bloginfo">
             {% if temp_blog.image != "" %}
             <span class="blogpic"><a href="{% url 'blog:blog_detail' temp_blog.id %}" title="{{ temp_blog.title }}"><img src="{{ MEDIA_URL }}{{ temp_blog.image }}" alt="{{ temp_blog.title }}" /></a></span>
