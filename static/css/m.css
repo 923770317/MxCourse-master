@@ -1,6 +1,6 @@
  @charset "gb2312";
 
-/* ´óÓÚ960px£¬Ð¡ÓÚ1199px */ 
+/* ï¿½ï¿½ï¿½ï¿½960pxï¿½ï¿½Ð¡ï¿½ï¿½1199px */ 
  @media screen and (min-width: 960px) and (max-width: 1199px) {
 header, article, footer { width: 100%; margin: auto; overflow: hidden }
 article { padding: 20px 0 0 0 }
@@ -15,7 +15,7 @@ nav ul li { padding: 0px 10px; }
 .mbimg { height: 150px; }
 }
  
- /* ´óÓÚ768px£¬Ð¡ÓÚ959px */ 
+ /* ï¿½ï¿½ï¿½ï¿½768pxï¿½ï¿½Ð¡ï¿½ï¿½959px */ 
  @media screen and (min-width: 768px) and (max-width: 959px) {
 header, article, footer { width: 100%; margin: auto; overflow: hidden }
 article { padding: 20px 0 0 0 }
@@ -31,7 +31,7 @@ nav ul li { padding: 0px 10px; }
 }
  
  
-/* ´óÓÚ480px£¬Ð¡ÓÚ767px */
+/* ï¿½ï¿½ï¿½ï¿½480pxï¿½ï¿½Ð¡ï¿½ï¿½767px */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 header, article, footer { width: 100%; margin: auto; overflow: hidden }
 nav, .search { display: none; }
@@ -47,14 +47,15 @@ h3.blogtitle { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
 .rightbox { margin-right: 0 }
 .navtab { margin-top: 30px; margin-bottom: 0 }
 .navlist li { margin: 0 5px 5px }
-.effect { width: 43% }
+.effect { width: 43%; min-height: 180px;max-height: 180px;}
 .mbpic { padding: 5px; margin: 0 5px 5px }
 .mbimg { height: 150px; }
+.effect:hover .mbimg { height: 60px; transition: 0.4s; }
 .pagelist { margin: 0 0 15px 0 }
 .link_box { margin-top: 30px }
 .blogsitetj li { width: 100%; display: block }
 }
-/* Ð¡ÓÚ479px */
+/* Ð¡ï¿½ï¿½479px */
 @media only screen and (max-width: 479px) {
 header, article, footer { width: 100%; margin: auto; overflow: hidden }
 nav, .blog, .search { display: none; }
@@ -70,7 +71,8 @@ h3.blogtitle { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
 .rightbox { margin-right: 0 }
 .navtab { margin-top: 30px; margin-bottom: 0 }
 .navlist li { margin: 0 5px 5px }
-.effect { width: 43% }
+.effect { width: 43%;min-height: 180px;max-height: 180px; }
+.effect:hover .mbimg { height: 60px; transition: 0.4s; }
 .mbpic { padding: 5px; margin: 0 5px 5px }
 .mbimg { height: 150px; }
 .pagelist { margin: 0 0 15px 0 }
